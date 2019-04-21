@@ -57,9 +57,14 @@ int main( void ) {
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, sizeof( float ) * 2, 0 );
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+	std::cout << "VERTEX:" << std::endl;
+	std::cout << source.VertexSource << std::endl;
+	std::cout << "FRAGMENT:" << std::endl;
+	std::cout << source.FragmentSource << std::endl;
+	
 
-	/*unsigned int shader = CreateShader(vertexShader, fragmentShader);
-	glUseProgram(shader);*/
+	unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
+	glUseProgram(shader);
 
     glBindBuffer( GL_ARRAY_BUFFER, 0 );
     /* Loop until the user closes the window */
@@ -77,7 +82,7 @@ int main( void ) {
         glfwPollEvents();
     }
 
-	//glDeleteProgram(shader);
+	glDeleteProgram(shader);
     
 	glfwTerminate();
     return 0;
