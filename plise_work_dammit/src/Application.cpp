@@ -16,6 +16,7 @@
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
 #include "Shader.h"
+#include "Texture.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
@@ -54,46 +55,71 @@ int main(void) {
 	{
 		// Create an openGL buffer.
 		float positions[] = {
-			-0.5f, -0.5f,	// 0
-			 0.5f, -0.5f,	// 1
-			 0.5f,  0.5f,	// 2
-			-0.5f,  0.5f	// 3
+			//	   Yr,    Xr,   Yt,   Xt
+				-0.5f, -0.5f, 0.0f, 0.0f,	// 0 Bottom Left.
+				 0.5f, -0.5f, 1.0f, 0.0f,	// 1 Top Left.
+				 0.5f,  0.5f, 1.0f, 1.0f,	// 2 Top Right.
+				-0.5f,  0.5f, 0.0f, 1.0f	// 3 Bottom Right.
+		};
+
+		float positions_2[] = {
+			-0.75f, -0.25f,
+			 0.25f, -0.25f,
+			 0.25f,  0.75f,
+			-0.75f,  0.75f
 		};
 
 		// The values of this array represent the index of a vector in the position array.
 		// No matter what type that is chosen for this array, it must be unsigned.
 		unsigned int indices[] = {
 			0, 1, 2,
-			2, 3, 0
-		};		
+			2, 3, 0,
+		};
+
+		GLCall(glEnable(GL_BLEND));
+		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
 		VertexArray va;
-		VertexBuffer vb(positions, 4 * 2 * sizeof(float));
+		VertexArray va2;
+		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
+		VertexBuffer vb2(positions_2, 4 * 2 * sizeof(float));
 
 		VertexBufferLayout layout;
+		layout.Push<float>(2);
+		va2.AddBuffer(vb2, layout);
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
 
 		IndexBuffer ib(indices, 6);
 
 		Shader shader("res/shaders/Basic.shader");
-		shader.Bind();
+		Shader shader2("res/shaders/Basic.shader");
+		shader2.Bind();
+		shader2.SetUniform4f("u_Color", 1.f, 0.f, 0.f, 0.5f);
 
-		shader.SetUniform4f("u_Color", 1.f, 1.f, 1.f, 1.f);
+		Texture texture("res/textures/rald.png");
+		texture.Bind();						// Bind to the desired texture slot, in this case slot 0.
+		shader.Bind();
+		shader.SetUniform1i("u_Texture", 0);// Set the uniform to be the desired texture, in this
+											// case the one in texture slot 0.
 
 		va.Unbind();
+		va2.Unbind();
 		vb.Unbind();
+		vb2.Unbind();
 		ib.Unbind();
 		shader.Unbind();
+		shader2.Unbind();
 
 		Renderer renderer;
+
 		float sat = 1.0f;	// HSV Saturation.
 		int hue = 0;		// HSV Hue.
 
 		float r = 0.0f;
 		float g = 0.0f;
 		float b = 0.0f;
-		float a = 1.0f;
+		float a = 0.5f;
 		float increment = 0.01f;
 
 		/* Loop until the user closes the window */
@@ -101,31 +127,30 @@ int main(void) {
 			/* Render here */
 			renderer.Clear();
 
-			shader.Bind();
-			shader.SetUniform4f("u_Color", r, g, b, a);
-
-			vb.Bind();
-			vb.UpdateBufferData(positions, 4 * 2 * sizeof(float));
-
 			renderer.Draw(va, ib, shader);
+			renderer.Draw(va2, ib, shader2);
 
+			shader2.Bind();
+			shader2.SetUniform4f("u_Color", r, g, b, a);
 			if (hue > 360)
 				hue = 0;
-
 			HSVtoRGB(hue, sat, 1.0f, &r, &g, &b);
 			hue++;
 
+			/*vb.Bind();
+			vb.UpdateBufferData(positions, 4 * 4 * sizeof(float));
 			if (positions[1] > 0.0f) {
 				increment = -0.01f;
 			}
 			else if (positions[1] < -1.0f) {
 				increment = 0.01f;
 			}
-			for (int i = 0; i < 8; i++) {
-				if (i % 2) {
-					positions[i] += increment;
+			for (int i = 0; i < 4; i++) {
+				for (int j = 0; j < 2; j++) {
+					if (((i * 4) + j) % 3)
+						positions[(i * 4) + j] += increment;
 				}
-			}
+			}*/
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 
