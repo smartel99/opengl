@@ -15,22 +15,13 @@
 #include "VertexBuffer.h"
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
+#include "Shader.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
 	x;\
 	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 
-struct ShaderProgramSource {
-	std::string VertexSource;
-	std::string FragmentSource;
-};
-
-//static void GLClearError();
-//static bool GLLogCall(const char* function, const char* file, int line);
-static ShaderProgramSource ParseShader(const std::string&);
-static unsigned int CompileShader(unsigned int type, const std::string& source);
-static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 void HSVtoRGB(int H, float S, float V, float* r, float* g, float* b);
 
 int main(void) {
@@ -85,18 +76,15 @@ int main(void) {
 
 		IndexBuffer ib(indices, 6);
 
-		ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+		Shader shader("res/shaders/Basic.shader");
+		shader.Bind();
 
-		unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource);
-		GLCall(glUseProgram(shader));
-
-		GLCall(int location = glGetUniformLocation(shader, "u_Color"));
-		ASSERT(location != -1);
+		shader.SetUniform4f("u_Color", 1.f, 1.f, 1.f, 1.f);
 
 		va.Unbind();
-		GLCall(glUseProgram(0));
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
-		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+		vb.Unbind();
+		ib.Unbind();
+		shader.Unbind();
 
 		float sat = 1.0f;	// HSV Saturation.
 		int hue = 0;		// HSV Hue.
@@ -112,15 +100,15 @@ int main(void) {
 			/* Render here */
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			GLCall(glUseProgram(shader));
-			GLCall(glUniform4f(location, r, g, b, a));
+			shader.Bind();
+			shader.SetUniform4f("u_Color", r, g, b, a);
 
 			va.Bind();
 			ib.Bind();
 
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
-			if (hue > 255)
+			if (hue > 360)
 				hue = 0;
 
 			HSVtoRGB(hue, sat, 1.0f, &r, &g, &b);
@@ -143,106 +131,15 @@ int main(void) {
 			/* Poll for and process events */
 			glfwPollEvents();
 		}
-
-		glDeleteProgram(shader);
 	}
 	glfwTerminate();
 	return 0;
 }
 
-//void GLClearError()
-//{
-//	while (glGetError() != GL_NO_ERROR);
-//}
-//
-//bool GLLogCall(const char* function, const char* file, int line)
-//{
-//	while (GLenum error = glGetError()) {
-//		std::cout << "[OpenGL Error]: <" << error << ">: " << function <<
-//			" " << file << ": " << line << std::endl;
-//		return false;
-//	}
-//	return true;
-//}
-
-ShaderProgramSource ParseShader(const std::string & filepath)
-{
-	std::ifstream stream(filepath);
-
-	enum class ShaderType {
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
-
-	std::string line;
-	std::stringstream ss[2];
-
-	ShaderType type = ShaderType::NONE;
-
-	while (getline(stream, line)) {
-		if (line.find("shader") != std::string::npos) {
-			if (line.find("vertex") != std::string::npos) {
-				type = ShaderType::VERTEX;
-			}
-			else if (line.find("fragment") != std::string::npos) {
-				type = ShaderType::FRAGMENT;
-			}
-		}
-		else {
-			ss[(int)type] << line << '\n';
-		}
-	}
-
-	return { ss[0].str(), ss[1].str() };
-}
-
-unsigned int CompileShader(unsigned int type, const std::string & source)
-{
-	unsigned int id = glCreateShader(type);
-	const char* src = source.c_str(); // Equivalent to &source[0].
-	glShaderSource(id, 1, &src, nullptr);
-	glCompileShader(id);
-
-	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-
-	if (result == GL_FALSE) {
-		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-		char* message = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &length, message);
-		std::cout << "Failed to compile " <<
-			(type == GL_VERTEX_SHADER ? "vertex" : "fregment")
-			<< " shader!" << std::endl;
-		std::cout << message << std::endl;
-		glDeleteShader(id);
-		return 0;
-	}
-
-	return id;
-}
-
-unsigned int CreateShader(const std::string & vertexShader, const std::string & fragmentShader)
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-
-	glLinkProgram(program);
-	glValidateProgram(program);
-
-	glDeleteShader(vs);
-	glDeleteShader(fs);
-
-	return program;
-}
-
 void HSVtoRGB(int H, float S, float V, float* r, float* g, float* b)
 {
 	float C = S * V;
-	float X = C * (1 - abs(fmod(H / 60.0, 2) - 1));
+	float X = C * (1 - float(abs(fmod(H / 60.0, 2) - 1)));
 	float m = V - C;
 	float Rs, Gs, Bs;
 
