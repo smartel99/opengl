@@ -86,6 +86,7 @@ int main(void) {
 		ib.Unbind();
 		shader.Unbind();
 
+		Renderer renderer;
 		float sat = 1.0f;	// HSV Saturation.
 		int hue = 0;		// HSV Hue.
 
@@ -98,15 +99,15 @@ int main(void) {
 		/* Loop until the user closes the window */
 		while (!glfwWindowShouldClose(window)) {
 			/* Render here */
-			glClear(GL_COLOR_BUFFER_BIT);
+			renderer.Clear();
 
 			shader.Bind();
 			shader.SetUniform4f("u_Color", r, g, b, a);
 
-			va.Bind();
-			ib.Bind();
+			vb.Bind();
+			vb.UpdateBufferData(positions, 4 * 2 * sizeof(float));
 
-			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+			renderer.Draw(va, ib, shader);
 
 			if (hue > 360)
 				hue = 0;
@@ -120,11 +121,11 @@ int main(void) {
 			else if (positions[1] < -1.0f) {
 				increment = 0.01f;
 			}
-			/*for (int i = 0; i < 8; i++) {
-				if (i % 4) {
+			for (int i = 0; i < 8; i++) {
+				if (i % 2) {
 					positions[i] += increment;
 				}
-			}*/
+			}
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 

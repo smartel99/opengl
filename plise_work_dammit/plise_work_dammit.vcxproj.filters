@@ -98,5 +98,6 @@
   <ItemGroup>
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.lib" />
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3dll.lib" />
+    <Library Include="Dependencies\GLFW\lib-vc2019\x64\glfw3.lib" />
   </ItemGroup>
 </Project>
