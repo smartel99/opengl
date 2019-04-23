@@ -55,6 +55,7 @@
     <None Include="Dependencies\GLEW\doc\install.html" />
     <None Include="Dependencies\GLEW\doc\log.html" />
     <None Include="Dependencies\GLEW\doc\wglew.html" />
+    <None Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\GLEW\include\GL\eglew.h">
@@ -93,5 +94,9 @@
     <ClInclude Include="src\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.lib" />
+    <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3dll.lib" />
   </ItemGroup>
 </Project>
