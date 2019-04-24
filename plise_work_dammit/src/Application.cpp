@@ -18,15 +18,30 @@
 #include "Shader.h"
 #include "Texture.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 #define ASSERT(x) if (!(x)) __debugbreak();
 #define GLCall(x) GLClearError();\
 	x;\
 	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
 
+// --- Function Declaration ---
 void HSVtoRGB(int H, float S, float V, float* r, float* g, float* b);
+void window_size_callback(GLFWwindow* window, int width, int height);
+// ----------------------------
+
+// --- Global Variable Declaration ---
+float gWindowHeight, gWindowWidth;
+bool ShouldResize;
+// -----------------------------------
 
 int main(void) {
 	GLFWwindow* window;
+	// Set initial window state.
+	gWindowHeight = 540.0f;
+	gWindowWidth = 960.0f;
+	ShouldResize = false;
 
 	/* Initialize the library */
 	if (!glfwInit())
@@ -37,11 +52,14 @@ int main(void) {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "Blinky Recty", NULL, NULL);
+	window = glfwCreateWindow(int(gWindowWidth), int(gWindowHeight), "Blinky Recty", NULL, NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;
 	}
+
+	// Set the callback for window resize.
+	glfwSetWindowSizeCallback(window, window_size_callback);
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
@@ -55,25 +73,18 @@ int main(void) {
 	{
 		// Create an openGL buffer.
 		float positions[] = {
-			//	   Yr,    Xr,   Yt,   Xt
-				-0.5f, -0.5f, 0.0f, 0.0f,	// 0 Bottom Left.
-				 0.5f, -0.5f, 1.0f, 0.0f,	// 1 Top Left.
-				 0.5f,  0.5f, 1.0f, 1.0f,	// 2 Top Right.
-				-0.5f,  0.5f, 0.0f, 1.0f	// 3 Bottom Right.
+			//	            Xr,                        Yr,         Xt,   Yt
+			(gWindowWidth / 4),       (gWindowHeight / 4),       0.0f, 0.0f,	// 0 Bottom Left.
+			((gWindowWidth / 4) * 3), (gWindowHeight / 4),       1.0f, 0.0f,	// 1 Bottom Right.
+			((gWindowWidth / 4) * 3), ((gWindowHeight / 4) * 3), 1.0f, 1.0f,	// 2 Top Right.
+			(gWindowWidth / 4),       ((gWindowHeight / 4) * 3), 0.0f, 1.0f		// 3 Top Left.
 		};
 
 		float positions_2[] = {
-			-0.75f, -0.25f,
-			 0.25f, -0.25f,
-			 0.25f,  0.75f,
-			-0.75f,  0.75f
-		};
-
-		float positions_behind_positions[] = {
-			-0.5f, -0.5f,
-			 0.5f, -0.5f,
-			 0.5f,  0.5f,
-			-0.5f,  0.5f,
+			 (gWindowWidth - 100.0f), (gWindowHeight - 100), 	// 0 Bottom Left.
+			  gWindowWidth,           (gWindowHeight - 100), 	// 1 Bottom Right.
+			  gWindowWidth,            gWindowHeight, 			// 2 Top Right.
+			 (gWindowWidth - 100.0f),  gWindowHeight, 			// 3 Top Left.
 		};
 
 		// The values of this array represent the index of a vector in the position array.
@@ -89,24 +100,38 @@ int main(void) {
 		VertexArray va;
 		VertexArray va2;
 		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
-		VertexBuffer vb2(positions, 4 * 4 * sizeof(float));
+		VertexBuffer vb2(positions_2, 4 * 2 * sizeof(float));
 
 		VertexBufferLayout layout;
 		layout.Push<float>(2);
+		va2.AddBuffer(vb2, layout);
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
-		va2.AddBuffer(vb2, layout);
 
 		IndexBuffer ib(indices, 6);
 
+		// Create a orthographic projection matrix which is equivalent to the resolution of the 
+		// window.
+		glm::mat4 proj = glm::ortho(0.0f, gWindowWidth, 0.0f, gWindowHeight, -1.0f, 1.0f);
+
+		// Create a view matrix that will simulate a camera translation of 100 units to the right.
+		// Since there is no such thing as a camera per say, me instead move the scene 100 units to
+		// the left to accomplish this effect.
+		glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+		// Create a model matrix that will move the model 200 units up and 200 units to the right.
+		glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
+
+		// Create a model view projection matrix.
+		glm::mat4 mvp = proj * view * model;
+
 		Shader shader("res/shaders/Texture.shader");
+		shader.SetUniformMat4f("u_MVP", mvp);
 		Shader shader2("res/shaders/Color.shader");
-		shader2.Bind();
-		shader2.SetUniform4f("u_Color", 1.f, 0.f, 0.f, 1.f);
+		shader2.SetUniformMat4f("u_MVP", mvp);
 
 		Texture texture("res/textures/rald.png");
 		texture.Bind();						// Bind to the desired texture slot, in this case slot 0.
-		shader.Bind();
 		shader.SetUniform1i("u_Texture", 0);// Set the uniform to be the desired texture, in this
 											// case the one in texture slot 0.
 
@@ -127,37 +152,53 @@ int main(void) {
 		float g = 0.0f;
 		float b = 0.0f;
 		float a = 1.f;
-		float increment = 0.01f;
+		float increment_y = gWindowHeight/100.0f;
+		float increment_x = gWindowWidth/100.f;
 
 		/* Loop until the user closes the window */
 		while (!glfwWindowShouldClose(window)) {
 			/* Render here */
 			renderer.Clear();
 
+			if (ShouldResize) {
+				ShouldResize = false;
+				// Update projection matrix.
+				glm::mat4 mvp = proj * view * model;
+				shader.SetUniformMat4f("u_MVP", mvp);
+				shader2.SetUniformMat4f("u_MVP", mvp);
+				// Update texture size.
+				vb.UpdateBufferData(positions, 4 * 4 * sizeof(float));
+			}
+
 			renderer.Draw(va2, ib, shader2);
 			renderer.Draw(va, ib, shader);
 
-			shader2.Bind();
 			shader2.SetUniform4f("u_Color", r, g, b, a);
 			if (hue > 360)
 				hue = 0;
 			HSVtoRGB(hue, sat, 1.0f, &r, &g, &b);
 			hue++;
 
-			vb.UpdateBufferData(positions, 4 * 4 * sizeof(float));
-			vb2.UpdateBufferData(positions, 4 * 4 * sizeof(float));
-			if (positions[1] > 0.0f) {
-				increment = -0.01f;
+			if (positions_2[2] >= gWindowWidth) {	// Bottom Right corner is at right edge of the window?
+				increment_x *= -1;
 			}
-			else if (positions[1] < -1.0f) {
-				increment = 0.01f;
+			else if (positions_2[0] <= 0.0f) {		// Bottom Left corner is at left edge of the window?
+				increment_x *= -1;
 			}
-			for (int i = 0; i < 4; i++) {
-				for (int j = 0; j < 2; j++) {
-					if (((i * 4) + j) % 8)
-						positions[(i * 4) + j] += increment;
-				}
+			if (positions_2[5] >= gWindowHeight) {	// Top Right corner is at top edge of the window?
+				increment_y *= -1;
 			}
+			else if (positions_2[1] <= 0.0f) {		// Bottom Left corner is at bottom edge of the window?
+				increment_y *= -1;
+			}
+			for (int i = 0; i < 8; i++) {
+				if (i % 2) // Y value of the vertex?
+					positions_2[i] += increment_y;
+				else       // X value of the verte.x
+					positions_2[i] += increment_x;
+			}
+			vb2.UpdateBufferData(positions_2, 4 * 2 * sizeof(float));
+
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 
@@ -210,4 +251,11 @@ void HSVtoRGB(int H, float S, float V, float* r, float* g, float* b)
 	*r = (Rs + m);
 	*g = (Gs + m);
 	*b = (Bs + m);
+}
+
+void window_size_callback(GLFWwindow* window, int width, int height) {
+	glViewport(0, 0, width, height);
+	gWindowHeight = float(height);
+	gWindowWidth = float(width);
+	ShouldResize = true;
 }
