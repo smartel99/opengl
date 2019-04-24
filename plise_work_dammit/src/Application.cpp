@@ -69,6 +69,13 @@ int main(void) {
 			-0.75f,  0.75f
 		};
 
+		float positions_behind_positions[] = {
+			-0.5f, -0.5f,
+			 0.5f, -0.5f,
+			 0.5f,  0.5f,
+			-0.5f,  0.5f,
+		};
+
 		// The values of this array represent the index of a vector in the position array.
 		// No matter what type that is chosen for this array, it must be unsigned.
 		unsigned int indices[] = {
@@ -82,20 +89,20 @@ int main(void) {
 		VertexArray va;
 		VertexArray va2;
 		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
-		VertexBuffer vb2(positions_2, 4 * 2 * sizeof(float));
+		VertexBuffer vb2(positions, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
 		layout.Push<float>(2);
-		va2.AddBuffer(vb2, layout);
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
+		va2.AddBuffer(vb2, layout);
 
 		IndexBuffer ib(indices, 6);
 
-		Shader shader("res/shaders/Basic.shader");
-		Shader shader2("res/shaders/Basic.shader");
+		Shader shader("res/shaders/Texture.shader");
+		Shader shader2("res/shaders/Color.shader");
 		shader2.Bind();
-		shader2.SetUniform4f("u_Color", 1.f, 0.f, 0.f, 0.5f);
+		shader2.SetUniform4f("u_Color", 1.f, 0.f, 0.f, 1.f);
 
 		Texture texture("res/textures/rald.png");
 		texture.Bind();						// Bind to the desired texture slot, in this case slot 0.
@@ -119,7 +126,7 @@ int main(void) {
 		float r = 0.0f;
 		float g = 0.0f;
 		float b = 0.0f;
-		float a = 0.5f;
+		float a = 1.f;
 		float increment = 0.01f;
 
 		/* Loop until the user closes the window */
@@ -127,8 +134,8 @@ int main(void) {
 			/* Render here */
 			renderer.Clear();
 
-			renderer.Draw(va, ib, shader);
 			renderer.Draw(va2, ib, shader2);
+			renderer.Draw(va, ib, shader);
 
 			shader2.Bind();
 			shader2.SetUniform4f("u_Color", r, g, b, a);
@@ -137,8 +144,8 @@ int main(void) {
 			HSVtoRGB(hue, sat, 1.0f, &r, &g, &b);
 			hue++;
 
-			/*vb.Bind();
 			vb.UpdateBufferData(positions, 4 * 4 * sizeof(float));
+			vb2.UpdateBufferData(positions, 4 * 4 * sizeof(float));
 			if (positions[1] > 0.0f) {
 				increment = -0.01f;
 			}
@@ -147,10 +154,10 @@ int main(void) {
 			}
 			for (int i = 0; i < 4; i++) {
 				for (int j = 0; j < 2; j++) {
-					if (((i * 4) + j) % 3)
+					if (((i * 4) + j) % 8)
 						positions[(i * 4) + j] += increment;
 				}
-			}*/
+			}
 			/* Swap front and back buffers */
 			glfwSwapBuffers(window);
 

@@ -147,7 +147,8 @@
     <None Include="Dependencies\GLEW\doc\log.html" />
     <None Include="Dependencies\GLEW\doc\wglew.html" />
     <None Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.dll" />
-    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Color.shader" />
+    <None Include="res\shaders\Texture.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\GLEW\include\GL\eglew.h" />
