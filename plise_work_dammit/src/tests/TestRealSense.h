@@ -20,9 +20,9 @@ namespace test {
 		std::unique_ptr<Texture> m_Texture;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 
-		std::unique_ptr <rs2::pipeline> m_Pipe;
-		std::unique_ptr <rs2::pipeline_profile> m_Profile;
-		std::unique_ptr <rs2::video_frame> m_Frame;
+		//rs2::pipeline m_Pipe;
+		//rs2::pipeline_profile m_Profile;
+		//rs2::frameset m_Frame;
 
 		// Create a orthographic projection matrix which is equivalent to the resolution of the 
 		// window.

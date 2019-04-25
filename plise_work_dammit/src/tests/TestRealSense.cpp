@@ -27,6 +27,11 @@ namespace test {
 			2, 3, 0,
 		};
 
+		// Start first device with its default stream.
+		// The function returns the pipeline profile which the pipeline used to start the device.
+		rs2::pipeline pipe;
+		//pipe.start();
+
 		m_Shader = std::make_unique<Shader>("res/shaders/Texture.shader");
 		m_VAO = std::make_unique<VertexArray>();
 		m_VertexBuffer = std::make_unique<VertexBuffer>(textured_square_positions, 4 * 4 * sizeof(float));
@@ -38,13 +43,10 @@ namespace test {
 
 		m_IndexBuffer = std::make_unique<IndexBuffer>(indices, 6);
 
-		// RealSense init stuff
-		// Create a pipeline to config and init camera.
-		m_Pipe = std::make_unique<rs2::pipeline>();
-		// Start first device with its default stream.
-		// The function returns the pipeline profile which the pipeline used to start the device.
-		m_Profile = std::make_unique<rs2::pipeline_profile>();
-		*m_Profile = m_Pipe->start();
+
+		//// Let the camera warm up.
+		//for (int i = 0; i < 30; i++)
+		//	m_Frame = m_Pipe.wait_for_frames();
 	}
 	TestRealSense::~TestRealSense()
 	{
