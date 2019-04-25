@@ -1,7 +1,6 @@
 // http://docs.gl/ 
 // OpenGl Documentation.
 
-
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -9,16 +8,7 @@
 #include <string>
 #include <sstream>
 
-#include "Renderer.h"
-#include "IndexBuffer.h"
-#include "VertexBuffer.h"
-#include "VertexArray.h"
-#include "VertexBufferLayout.h"
-#include "Shader.h"
-#include "Texture.h"
-
 #include "utils/Utils.h"
-#include "tests/TestClearColor.h"
 
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
@@ -27,15 +17,12 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_opengl3.h"
 #include "imgui/imgui_impl_glfw.h"
-#include "tests/TestTexture2D.h"
 
-#define ASSERT(x) if (!(x)) __debugbreak();
-#define GLCall(x) GLClearError();\
-	x;\
-	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
+#include "tests/TestClearColor.h"
+#include "tests/TestTexture2D.h"
+#include "tests/TestRealSense.h"
 
 // --- Function Declaration ---
-void HSVtoRGB(int H, float S, float V, float* r, float* g, float* b);
 void window_size_callback(GLFWwindow* window, int width, int height);
 // ----------------------------
 
@@ -97,6 +84,7 @@ int main(void) {
 
 		testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 		testMenu->RegisterTest<test::TestTexture2D>("2D Texture");
+		testMenu->RegisterTest<test::TestRealSense>("RealSens");
 
 		while (!glfwWindowShouldClose(window)) {
 			GLCall(glClearColor(RENDER_COLOR_BLACK));

@@ -3,6 +3,13 @@
 #include <string>
 #include <functional>
 
+#include "Texture.h"
+#include "Shader.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+#include "VertexArray.h"
+#include "VertexBufferLayout.h"
+
 namespace test {
 	class Test {
 	public:

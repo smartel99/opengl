@@ -2,10 +2,6 @@
 #include "Renderer.h"
 #include "imgui/imgui.h"
 
-#include "Texture.h"
-#include "VertexBuffer.h"
-#include "VertexBufferLayout.h"
-
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -44,14 +40,6 @@ namespace test {
 
 
 		m_IndexBuffer = std::make_unique<IndexBuffer>(indices, 6);
-		// Create a orthographic projection matrix which is equivalent to the resolution of the 
-		// window.
-		m_Proj = glm::ortho(0.0f, 960.0f, 0.0f, 540.0f, -1.0f, 1.0f);
-
-		// Create a view matrix that will simulate a camera translation of 100 units to the right.
-		// Since there is no such thing as a camera per say, me instead move the scene 100 units to
-		// the left to accomplish this effect.
-		m_View = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
 
 		m_Texture = std::make_unique<Texture>("res/textures/rald.png");
 		m_Shader->Bind();

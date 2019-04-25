@@ -1,14 +1,14 @@
 #pragma once
-
+#ifndef TESTREALSENSE_H
+#define TESTREALSENSE_H
 #include "Test.h"
-
-#include <memory>
+#include <librealsense2/rs.hpp>
 
 namespace test {
-	class TestTexture2D :public Test {
+	class TestRealSense :public Test {
 	public:
-		TestTexture2D();
-		~TestTexture2D();
+		TestRealSense();
+		~TestRealSense();
 
 		void OnUpdate(float deltaTime) override;
 		void OnRender() override;
@@ -20,7 +20,10 @@ namespace test {
 		std::unique_ptr<Texture> m_Texture;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 
-		glm::vec3 m_translationA, m_translationB;
+		std::unique_ptr <rs2::pipeline> m_Pipe;
+		std::unique_ptr <rs2::pipeline_profile> m_Profile;
+		std::unique_ptr <rs2::video_frame> m_Frame;
+
 		// Create a orthographic projection matrix which is equivalent to the resolution of the 
 		// window.
 		glm::mat4 m_Proj;
@@ -28,6 +31,8 @@ namespace test {
 		// Since there is no such thing as a camera per say, we instead move the scene to accomplish 
 		// this effect.
 		glm::mat4 m_View;
-
+		// Create a model matrix that will translate the model according to the values of the slider.
+		glm::mat4 m_Model;
 	};
 }
+#endif

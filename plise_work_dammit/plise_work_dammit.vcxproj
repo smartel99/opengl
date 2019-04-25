@@ -54,6 +54,18 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="Dependencies\Intel RealSense SDK 2.0\intel.realsense.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="Dependencies\Intel RealSense SDK 2.0\intel.realsense.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="Dependencies\Intel RealSense SDK 2.0\intel.realsense.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="Dependencies\Intel RealSense SDK 2.0\intel.realsense.props" />
+  </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -78,13 +90,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;src\vendor;$(ProjectDir)Dependencies\GLFW\include;$(ProjectDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\include;src;src\vendor;$(ProjectDir)Dependencies\GLFW\include;$(ProjectDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\GLFW\lib-vc2019/x64;$(ProjectDir)Dependencies\GLEW\lib\Release\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib; opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\bin\x64;$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\lib\x64;$(ProjectDir)Dependencies\GLFW\lib-vc2019/x64;$(ProjectDir)Dependencies\GLEW\lib\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>realsense2.lib;glfw3.lib; opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,15 +125,15 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;src\vendor;$(ProjectDir)Dependencies\GLFW\include;$(ProjectDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\include;src;src\vendor;$(ProjectDir)Dependencies\GLFW\include;$(ProjectDir)Dependencies/GLEW/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\GLFW\lib-vc2019/x64;$(ProjectDir)Dependencies\GLEW\lib\Release\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib; opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\bin\x64;$(ProjectDir)Dependencies\Intel RealSense SDK 2.0\lib\x64;$(ProjectDir)Dependencies\GLFW\lib-vc2019/x64;$(ProjectDir)Dependencies\GLEW\lib\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>realsense2.lib;glfw3.lib; opengl32.lib;User32.lib;Gdi32.lib;Shell32.lib;glew32s.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -131,6 +143,7 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestRealSense.cpp" />
     <ClCompile Include="src\tests\TestTexture2D.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\utils\Utils.cpp" />
@@ -301,9 +314,38 @@
     <ClInclude Include="Dependencies\GLEW\include\GL\wglew.h" />
     <ClInclude Include="Dependencies\GLFW\include\GLFW\glfw3.h" />
     <ClInclude Include="Dependencies\GLFW\include\GLFW\glfw3native.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_context.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_device.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_export.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_frame.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_internal.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_options.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_pipeline.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_processing.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_record_playback.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_sensor.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_types.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_advanced_mode_command.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_config.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_context.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_device.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_frame.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_internal.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_option.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_pipeline.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_processing.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_record_playback.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_sensor.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_types.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs.hpp" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rsutil.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs_advanced_mode.h" />
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs_advanced_mode.hpp" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestRealSense.h" />
     <ClInclude Include="src\tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\utils\Utils.h" />
@@ -571,6 +613,7 @@
     <Library Include="Dependencies\GLFW\lib-vc2019\x64\glfw3.lib" />
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.lib" />
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3dll.lib" />
+    <Library Include="Dependencies\Intel RealSense SDK 2.0\lib\x64\realsense2.lib" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\rald.png" />

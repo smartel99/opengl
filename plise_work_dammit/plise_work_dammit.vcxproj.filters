@@ -84,6 +84,9 @@
     <ClCompile Include="src\tests\TestTexture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestRealSense.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Dependencies\GLEW\doc\advanced.html" />
@@ -1310,11 +1313,99 @@
     <ClInclude Include="src\tests\TestTexture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_advanced_mode_command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_device.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_frame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_option.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_pipeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_processing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_record_playback.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\h\rs_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_context.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_device.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_export.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_frame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_internal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_options.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_pipeline.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_processing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_record_playback.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_sensor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\hpp\rs_types.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs_advanced_mode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rs_advanced_mode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\Intel RealSense SDK 2.0\include\librealsense2\rsutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestRealSense.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3.lib" />
     <Library Include="Dependencies\GLFW\lib-vc2019\x86\glfw3dll.lib" />
     <Library Include="Dependencies\GLFW\lib-vc2019\x64\glfw3.lib" />
+    <Library Include="Dependencies\Intel RealSense SDK 2.0\lib\x64\realsense2.lib" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\rald.png">
