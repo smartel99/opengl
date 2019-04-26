@@ -95,7 +95,7 @@ namespace rs2
         /**
         * Conversion to boolean value to test for the object's validity
         *
-        * \return true iff the profile is valid
+        * \return true if the profile is valid
         */
         operator bool() const
         {

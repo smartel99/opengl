@@ -59,16 +59,13 @@ int main(void) {
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
 
-	glfwSwapInterval(1);
+	glfwSwapInterval(0);
 
 	if (glewInit() != GLEW_OK)
 		std::cout << "Error at glewInit!" << std::endl;
 
 	std::cout << "Using OpenGL Version " << glGetString(GL_VERSION) << std::endl;
 	{
-		GLCall(glEnable(GL_BLEND));
-		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
-
 		Renderer renderer;
 
 		// Initialize ImGui related stuff.
@@ -99,7 +96,7 @@ int main(void) {
 				currentTest->OnUpdate(0.0f);
 				currentTest->OnRender();
 				ImGui::Begin("Test");
-				if (currentTest != testMenu && ImGui::Button("<-")) {
+				if ((currentTest != testMenu && ImGui::Button("<-") || currentTest->m_HasFailed)) {
 					delete currentTest;
 					currentTest = testMenu;
 				}
@@ -109,14 +106,14 @@ int main(void) {
 
 			ImGui::Render();
 			ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-			
+
 			glfwSwapBuffers(window);
 
 			glfwPollEvents();
 		}
-		delete currentTest;
 		if (currentTest != testMenu)
 			delete testMenu;
+		delete currentTest;
 	}
 
 	ImGui_ImplOpenGL3_Shutdown();

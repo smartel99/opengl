@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include <librealsense2/rs.hpp>
 
 class Texture {
 private:
@@ -10,6 +11,7 @@ private:
 	int m_Width, m_Height, m_BPP;
 public:
 	Texture(const std::string& path);
+	Texture(const rs2::video_frame& frame);
 	~Texture();
 
 	void Bind(unsigned int slot = 0) const;

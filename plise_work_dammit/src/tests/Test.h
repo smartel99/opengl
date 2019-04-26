@@ -13,12 +13,17 @@
 namespace test {
 	class Test {
 	public:
-		Test() {}
+		Test()
+		: m_HasFailed(false)
+		{
+		}
 		virtual ~Test() {}
 
 		virtual void OnUpdate(float deltaTime) {}
 		virtual void OnRender() {}
 		virtual void OnImGuiRender() {}
+
+		bool m_HasFailed;
 	};
 
 	class TestMenu :public Test {

@@ -14,15 +14,15 @@ namespace test {
 		void OnRender() override;
 		void OnImGuiRender() override;
 	private:
+		void Print_Error(const rs2::error& e);
 		std::unique_ptr<VertexArray> m_VAO;
 		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<Texture> m_Texture;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 
-		//rs2::pipeline m_Pipe;
-		//rs2::pipeline_profile m_Profile;
-		//rs2::frameset m_Frame;
+		std::unique_ptr<rs2::pipeline> m_Pipe;
+		rs2::pipeline_profile m_Profile;
 
 		// Create a orthographic projection matrix which is equivalent to the resolution of the 
 		// window.
