@@ -21,6 +21,7 @@
 #include "tests/TestClearColor.h"
 #include "tests/TestTexture2D.h"
 #include "tests/TestRealSense.h"
+#include "tests/TestComputeShader.h"
 
 // --- Function Declaration ---
 void window_size_callback(GLFWwindow* window, int width, int height);
@@ -42,7 +43,7 @@ int main(void) {
 	if (!glfwInit())
 		return -1;
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
@@ -82,6 +83,7 @@ int main(void) {
 		testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 		testMenu->RegisterTest<test::TestTexture2D>("2D Texture");
 		testMenu->RegisterTest<test::TestRealSense>("RealSense");
+		testMenu->RegisterTest < test::TestComputeShader>("Compute Shaders");
 
 		while (!glfwWindowShouldClose(window)) {
 			GLCall(glClearColor(RENDER_COLOR_BLACK));
