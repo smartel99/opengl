@@ -10,6 +10,7 @@ private:
 	unsigned char* m_LocalBuffer;
 	int m_Width, m_Height, m_BPP;
 public:
+	Texture();
 	Texture(const std::string& path);
 	Texture(const rs2::video_frame& frame);
 	~Texture();

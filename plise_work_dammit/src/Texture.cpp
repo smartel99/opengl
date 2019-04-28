@@ -1,6 +1,21 @@
 #include "Texture.h"
 #include "stb_image/stb_image.h"
 
+Texture::Texture()
+	:m_RendererID(0), m_FilePath("None"), m_LocalBuffer(nullptr),
+	m_Width(512), m_Height(512), m_BPP(0)
+{
+	GLCall(glGenTextures(1, &m_RendererID));
+	GLCall(glActiveTexture(GL_TEXTURE0));
+	glBindTexture(GL_TEXTURE_2D, m_RendererID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA32F, m_Width, m_Height, 0, GL_RGBA, GL_FLOAT,
+		NULL);
+	glBindImageTexture(0, m_RendererID, 0, GL_FALSE, 0, GL_WRITE_ONLY, GL_RGBA32F);
+}
 Texture::Texture(const std::string& path)
 	: m_RendererID(0), m_FilePath(path), m_LocalBuffer(nullptr), 
 	m_Width(0), m_Height(0), m_BPP(0)

@@ -14,6 +14,7 @@
 
 void GLClearError();
 bool GLLogCall(const char* function, const char* file, int line);
+const char* GetGLErrorName(GLenum errorno);
 
 class Renderer {
 private:

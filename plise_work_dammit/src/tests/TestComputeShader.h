@@ -2,6 +2,7 @@
 
 #include "Test.h"
 
+#include "ComputeShader.h"
 #include <memory>
 
 namespace test {
@@ -19,6 +20,11 @@ namespace test {
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<Texture> m_Texture;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+
+
+		unsigned int m_ComputeShader;
+		unsigned int m_ComputeProgram;
+
 
 		glm::vec3 m_translationA, m_translationB;
 		// Create a orthographic projection matrix which is equivalent to the resolution of the 
