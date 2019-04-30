@@ -82,8 +82,8 @@ int main(void) {
 
 		testMenu->RegisterTest<test::TestClearColor>("Clear Color");
 		testMenu->RegisterTest<test::TestTexture2D>("2D Texture");
-		//testMenu->RegisterTest<test::TestRealSense>("RealSense");
-		testMenu->RegisterTest < test::TestComputeShader>("Compute Shaders");
+		testMenu->RegisterTest<test::TestRealSense>("RealSense");
+		testMenu->RegisterTest<test::TestComputeShader>("Compute Shaders");
 
 		while (!glfwWindowShouldClose(window)) {
 			GLCall(glClearColor(RENDER_COLOR_BLACK));
@@ -95,13 +95,13 @@ int main(void) {
 			ImGui::NewFrame();
 
 			if (currentTest) {
-				currentTest->OnUpdate(0.0f);
-				currentTest->OnRender();
 				ImGui::Begin("Test");
 				if ((currentTest != testMenu && ImGui::Button("<-") || currentTest->m_HasFailed)) {
 					delete currentTest;
 					currentTest = testMenu;
 				}
+				currentTest->OnUpdate(0.0f);
+				currentTest->OnRender();
 				currentTest->OnImGuiRender();
 				ImGui::End();
 			}

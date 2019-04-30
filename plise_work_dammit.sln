@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plise_work_dammit", "plise_work_dammit\plise_work_dammit.vcxproj", "{D74B9801-6754-4C2E-9A59-E9D5FB9710A3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointTracking", "PointTracking\PointTracking.vcxproj", "{94C5CD89-2622-4996-AC70-B817E17FD2A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{D74B9801-6754-4C2E-9A59-E9D5FB9710A3}.Release|x64.Build.0 = Release|x64
 		{D74B9801-6754-4C2E-9A59-E9D5FB9710A3}.Release|x86.ActiveCfg = Release|Win32
 		{D74B9801-6754-4C2E-9A59-E9D5FB9710A3}.Release|x86.Build.0 = Release|Win32
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Debug|x64.ActiveCfg = Debug|x64
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Debug|x64.Build.0 = Debug|x64
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Debug|x86.ActiveCfg = Debug|Win32
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Debug|x86.Build.0 = Debug|Win32
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Release|x64.ActiveCfg = Release|x64
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Release|x64.Build.0 = Release|x64
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Release|x86.ActiveCfg = Release|Win32
+		{94C5CD89-2622-4996-AC70-B817E17FD2A2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

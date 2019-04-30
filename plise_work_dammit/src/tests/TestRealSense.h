@@ -5,6 +5,12 @@
 #include <librealsense2/rs.hpp>
 
 namespace test {
+	struct Pixel {
+		int Slot;
+		int x;
+		int y;
+	};
+
 	class TestRealSense :public Test {
 	public:
 		TestRealSense();
@@ -33,6 +39,8 @@ namespace test {
 		glm::mat4 m_View;
 		// Create a model matrix that will translate the model according to the values of the slider.
 		glm::mat4 m_Model;
+
+		float m_DepthScale;
 	};
 }
 #endif
