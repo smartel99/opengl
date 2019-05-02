@@ -16,12 +16,8 @@
 //using namespace std;
 using namespace cv;
 
-/// Global variables
-Mat src, src_gray, dst;
-Mat detected_edges;
-
 int edgeThresh = 1;
-int lowThreshold = 6;
+int lowThreshold = 20;
 int const max_lowThreshold = 100;
 int ratio = 3;
 int kernel_size = 3;
@@ -33,97 +29,89 @@ int c;
 const char* canny_name = "Canny edge detection";
 
 
-double SobelEdgeDetection() {
+//double SobelEdgeDetection() {
+//
+//	Mat grad;
+//	const char* window_name = "Sobel Demo - Simple Edge Detector";
+//
+//#ifdef DEBUG
+//	auto start = std::chrono::steady_clock::now();
+//#endif
+//
+//	// Calculate the derivatives in x and y directions using the Sobel function.
+//	/// Generate grad_x and grad_y.
+//	Mat grad_x, grad_y;
+//	Mat abs_grad_x, abs_grad_y;
+//
+//	// Gradient X.
+//	Sobel(src_gray, grad_x, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
+//	convertScaleAbs(grad_x, abs_grad_x);
+//
+//	// Gradient Y.
+//	Sobel(src_gray, grad_y, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
+//	convertScaleAbs(grad_y, abs_grad_y);
+//
+//	/// Total Gradient (approximate).
+//	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, grad);
+//#ifdef DEBUG
+//	auto end = std::chrono::steady_clock::now();
+//	auto diff = end - start;
+//	return std::chrono::duration<double, std::milli>(diff).count();
+//#endif
+//#ifndef DEBUG
+//	/// Create window.
+//	namedWindow(window_name, WINDOW_AUTOSIZE);
+//	namedWindow("Original", WINDOW_AUTOSIZE);
+//	imshow("Original", src);
+//	imshow(window_name, grad);
+//	imwrite("res/img/rald_simple_sobel_1.png", grad);
+//	waitKey();
+//	return 0;
+//#endif
+//}
+//
+//double LaplaceEdgeDetection() {
+//
+//	Mat abs_dst;
+//	const char* window_name = "Laplace Demo - Simple Edge Detector";
+//
+//#ifdef DEBUG
+//	auto start = std::chrono::steady_clock::now();
+//#endif
+//
+//	/// Apply Laplace function.
+//	Laplacian(src_gray, dst, ddepth, kernel_size, scale, delta, BORDER_DEFAULT);
+//	convertScaleAbs(dst, abs_dst);
+//#ifdef DEBUG
+//	auto end = std::chrono::steady_clock::now();
+//	auto diff = end - start;
+//	return std::chrono::duration<double, std::milli>(diff).count();
+//#endif
+//#ifndef DEBUG
+//	/// Create window.
+//	namedWindow(window_name, WINDOW_AUTOSIZE);
+//	namedWindow("Original", WINDOW_AUTOSIZE);
+//	imshow(window_name, abs_dst);
+//	imshow("Original", src);
+//	imwrite("res/img/Rald-Laplace-simple-1.png", abs_dst);
+//	waitKey();
+//	return 0;
+//#endif
+//}
 
-	Mat grad;
-	const char* window_name = "Sobel Demo - Simple Edge Detector";
+Mat CannyThreshold(Mat src) {
+	Mat detected_edges, src_gray, dst;
 
-#ifdef DEBUG
-	auto start = std::chrono::steady_clock::now();
-#endif
+	/// Convert to gray scale.
+	cvtColor(src, src_gray, COLOR_BGR2GRAY);
 
-	// Calculate the derivatives in x and y directions using the Sobel function.
-	/// Generate grad_x and grad_y.
-	Mat grad_x, grad_y;
-	Mat abs_grad_x, abs_grad_y;
-
-	// Gradient X.
-	Sobel(src_gray, grad_x, ddepth, 1, 0, 3, scale, delta, BORDER_DEFAULT);
-	convertScaleAbs(grad_x, abs_grad_x);
-
-	// Gradient Y.
-	Sobel(src_gray, grad_y, ddepth, 0, 1, 3, scale, delta, BORDER_DEFAULT);
-	convertScaleAbs(grad_y, abs_grad_y);
-
-	/// Total Gradient (approximate).
-	addWeighted(abs_grad_x, 0.5, abs_grad_y, 0.5, 0, grad);
-#ifdef DEBUG
-	auto end = std::chrono::steady_clock::now();
-	auto diff = end - start;
-	return std::chrono::duration<double, std::milli>(diff).count();
-#endif
-#ifndef DEBUG
-	/// Create window.
-	namedWindow(window_name, WINDOW_AUTOSIZE);
-	namedWindow("Original", WINDOW_AUTOSIZE);
-	imshow("Original", src);
-	imshow(window_name, grad);
-	imwrite("res/img/rald_simple_sobel_1.png", grad);
-	waitKey();
-	return 0;
-#endif
-}
-
-double LaplaceEdgeDetection() {
-
-	Mat abs_dst;
-	const char* window_name = "Laplace Demo - Simple Edge Detector";
-
-#ifdef DEBUG
-	auto start = std::chrono::steady_clock::now();
-#endif
-
-	/// Apply Laplace function.
-	Laplacian(src_gray, dst, ddepth, kernel_size, scale, delta, BORDER_DEFAULT);
-	convertScaleAbs(dst, abs_dst);
-#ifdef DEBUG
-	auto end = std::chrono::steady_clock::now();
-	auto diff = end - start;
-	return std::chrono::duration<double, std::milli>(diff).count();
-#endif
-#ifndef DEBUG
-	/// Create window.
-	namedWindow(window_name, WINDOW_AUTOSIZE);
-	namedWindow("Original", WINDOW_AUTOSIZE);
-	imshow(window_name, abs_dst);
-	imshow("Original", src);
-	imwrite("res/img/Rald-Laplace-simple-1.png", abs_dst);
-	waitKey();
-	return 0;
-#endif
-}
-
-double CannyThreshold() {
-	Mat abs_dst;
-#ifdef DEBUG
-	auto start = std::chrono::steady_clock::now();
-#endif
+	/// Reduce noise with a kernel 3x3.
+	blur(src_gray, detected_edges, Size(3, 3));
 	/// Canny detector
 	Canny(detected_edges, detected_edges, lowThreshold, lowThreshold * ratio, kernel_size);
-	
 
-#ifdef DEBUG
-	auto end = std::chrono::steady_clock::now();
-	auto diff = end - start;
-	return std::chrono::duration<double, std::milli>(diff).count();
-#endif
-#ifndef DEBUG
-	/// Using Canny's output as a mask, we display our result
-	dst = Scalar::all(0);
 	src.copyTo(dst, detected_edges);
-	imshow(canny_name, dst);
-	return 0;
-#endif
+	return dst;
 }
 
 cv::Mat frame_to_mat(const rs2::frame& f)
@@ -159,50 +147,50 @@ cv::Mat frame_to_mat(const rs2::frame& f)
 
 int main(int argv, char** argc)
 {
-	double total_sobel = 0;
-	double total_laplace = 0;
-	double total_canny = 0;
-	int loops = 50;
-
 	rs2::pipeline pipe;
-	pipe.start();
 
-	rs2::frameset frameset;
+	// Create a configuration for configuring the pipeline with a non default profile.
+	rs2::config cfg;
 
-	namedWindow(canny_name, WINDOW_AUTOSIZE);
+	// Add desired streams to config.
+	cfg.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 30);
 
-	while (true) {
-		frameset = pipe.wait_for_frames();
-		rs2::video_frame vf = frameset.get_color_frame();
-		src = frame_to_mat(vf);
-		cvtColor(src, src_gray, COLOR_BGR2GRAY);
-		CannyThreshold();
+	// Instruct pipeline to start streaming with the requested configuration.
+	pipe.start(cfg);
+	namedWindow("Original", WINDOW_AUTOSIZE);
+	namedWindow("Canny", WINDOW_AUTOSIZE);
+
+	// Camera warm up - dropping several first frames to let auto-exposure stabilize.
+	rs2::frameset frames;
+	for (int i = 0; i < 30; i++) {
+		// Wait for all configured streams to produce a frame.
+		frames = pipe.wait_for_frames();
 	}
 
-	/*/// Load an image.
-	src = imread("res/img/rald.png");
+	int fps = 0;
+	auto time = std::chrono::steady_clock::now();
 
-	if (!src.data)
-		return 0;
+	while (waitKey(1)==-1) {
+		// Get each frame.
+		frames = pipe.wait_for_frames();
+		rs2::frame color_frame = frames.get_color_frame();
 
-	/// Create a matrix of the same type and size as src (for dst).
-	dst.create(src.size(), src.type());
+		// Creating OpenCV Matrix from a color image.
+		Mat color(Size(640, 480), CV_8UC3, (void*)color_frame.get_data(), Mat::AUTO_STEP);
+		Mat lines = CannyThreshold(color);
 
-
-	/// Apply a Gaussian Blur to the image to reduce the noise.
-	GaussianBlur(src, src, Size(3, 3), 0, 0, BORDER_DEFAULT);
-
-	/// Convert it to gray.
-	cvtColor(src, src_gray, COLOR_BGR2GRAY);
-
-	for (int i = 0; i <= loops; i++) {
-		total_sobel += SobelEdgeDetection();
-		total_laplace += LaplaceEdgeDetection();
-		total_canny += CannyThreshold();
+		fps++;
+		if (std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - time).count() >= 1000) {
+			time = std::chrono::steady_clock::now();
+			std::cout << "FPS: " << fps << "      \r";
+			fps = 0;
+		}
+		// Display in a GUI.
+		imshow("Original", color);
+		imshow("Canny", lines);
 	}
-	std::cout << "Average Time for Sobel edge detection: " << total_sobel / loops << " ms" << std::endl;
-	std::cout << "Average Time for Laplace edge detection: " << total_laplace / loops << " ms" << std::endl;
-	std::cout << "Average Time for Canny edge detection: " << total_canny / loops << " ms" << std::endl;
-	while (true);
-	return 0;*/
+
+
+
+	return 0;
 }
