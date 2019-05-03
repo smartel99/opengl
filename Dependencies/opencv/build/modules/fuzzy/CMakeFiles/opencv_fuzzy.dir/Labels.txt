@@ -1,0 +1,49 @@
+# Target labels
+ Extra
+ opencv_fuzzy
+ Module
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/include/opencv2/fuzzy.hpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/include/opencv2/fuzzy/fuzzy_F0_math.hpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/include/opencv2/fuzzy/fuzzy_F1_math.hpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/include/opencv2/fuzzy/fuzzy_image.hpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/include/opencv2/fuzzy/types.hpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/src/fuzzy_F0_math.cpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/src/fuzzy_F1_math.cpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/src/fuzzy_image.cpp
+ Extra
+ opencv_fuzzy
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/src/precomp.hpp
+ Extra
+ opencv_fuzzy
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/fuzzy/opencv_fuzzy_pch.cpp
+ Extra
+ opencv_fuzzy
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/fuzzy/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/fuzzy/opencv_fuzzy_main.cpp

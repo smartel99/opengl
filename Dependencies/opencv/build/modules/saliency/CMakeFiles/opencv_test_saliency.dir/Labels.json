@@ -1,0 +1,51 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/saliency/test/test_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_saliency",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/saliency/test/test_static_saliency_spectral_residual.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_saliency",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/saliency/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_saliency",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/saliency/opencv_test_saliency_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_saliency",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_saliency",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_saliency"
+	}
+}

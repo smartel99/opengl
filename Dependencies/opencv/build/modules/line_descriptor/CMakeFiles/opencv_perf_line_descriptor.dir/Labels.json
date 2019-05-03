@@ -1,0 +1,51 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/perf/perf_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/perf/perf_matching.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/perf/perf_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"PerfTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/line_descriptor/opencv_perf_line_descriptor_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"PerfTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_line_descriptor",
+			"PerfTest"
+		],
+		"name" : "opencv_perf_line_descriptor"
+	}
+}

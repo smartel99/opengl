@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\hfs.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\hfs_core.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\magnitude\magnitude.cpp">
+      <Filter>Src\magnitude</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\merge\merge.cpp">
+      <Filter>Src\merge</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\slic\gslic_engine.cpp">
+      <Filter>Src\slic</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\slic\slic.cpp">
+      <Filter>Src\slic</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\hfs\opencv_hfs_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\hfs\opencv_hfs_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\include\opencv2\hfs.hpp">
+      <Filter>Include\opencv2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\hfs_core.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\magnitude\magnitude.hpp">
+      <Filter>Src\magnitude</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\merge\merge.hpp">
+      <Filter>Src\merge</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\or_utils\or_image.hpp">
+      <Filter>Src\or_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\or_utils\or_memory_block.hpp">
+      <Filter>Src\or_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\or_utils\or_types.hpp">
+      <Filter>Src\or_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\or_utils\or_vector.hpp">
+      <Filter>Src\or_utils</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\src\slic\slic.hpp">
+      <Filter>Src\slic</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\cvconfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\opencv2\opencv_modules.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\hfs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\hfs\vs_version.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2">
+      <UniqueIdentifier>{3CCCA740-10F4-3B9D-AB1C-09CD66C2BDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{631A207B-E3D3-361E-9553-6087D4CA04DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\magnitude">
+      <UniqueIdentifier>{A38A440A-0766-352F-A557-909769F10A57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\merge">
+      <UniqueIdentifier>{A932588A-E936-3C62-8E2E-28C895CFBEE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\or_utils">
+      <UniqueIdentifier>{5D44B281-827C-398C-9572-A913B3030FD3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\slic">
+      <UniqueIdentifier>{58129854-2A35-3E1C-83D7-C3EF6EFA1113}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

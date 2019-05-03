@@ -1,0 +1,63 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/include/opencv2/plot.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_plot",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/src/plot.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_plot",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/src/precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_plot",
+				"Module"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/opencv_plot_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_plot",
+				"Module"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/vs_version.rc"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/opencv_plot_main.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_plot",
+			"Module"
+		],
+		"name" : "opencv_plot"
+	}
+}

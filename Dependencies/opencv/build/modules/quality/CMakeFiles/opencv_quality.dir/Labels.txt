@@ -1,0 +1,65 @@
+# Target labels
+ Extra
+ opencv_quality
+ Module
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/quality_utils.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualitybase.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualitybrisque.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualitygmsd.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualitymse.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualitypsnr.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/include/opencv2/quality/qualityssim.hpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/src/qualitybrisque.cpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/src/qualitygmsd.cpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/src/qualitymse.cpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/src/qualityssim.cpp
+ Extra
+ opencv_quality
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/src/precomp.hpp
+ Extra
+ opencv_quality
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/quality/opencv_quality_pch.cpp
+ Extra
+ opencv_quality
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/quality/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/quality/opencv_quality_main.cpp

@@ -1,0 +1,21 @@
+# Target labels
+ Extra
+ opencv_videostab
+ AccuracyTest
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/videostab/test/test_main.cpp
+ Extra
+ opencv_videostab
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/videostab/test/test_motion_estimation.cpp
+ Extra
+ opencv_videostab
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/videostab/test/test_precomp.hpp
+ Extra
+ opencv_videostab
+ AccuracyTest
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/videostab/opencv_test_videostab_pch.cpp
+ Extra
+ opencv_videostab
+ AccuracyTest

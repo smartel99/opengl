@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\adaptive_manifold_filter_n.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\anisodiff.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\bilateral_texture_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\brightedges.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\deriche_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\disparity_filters.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\domain_transform.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\dtfilter_cpu.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\edgeaware_filters_common.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\edgeboxes.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\edgepreserving_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\estimated_covariance.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\fast_hough_transform.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\fast_line_detector.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\fbs_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\fgs_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\fourier_descriptors.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\graphsegmentation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\guided_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\joint_bilateral_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\l0_smooth.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\lsc.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\niblack_thresholding.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\paillou_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\peilin.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\quaternion.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\ridgedetectionfilter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\rolling_guidance_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\run_length_morphology.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\seeds.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\selectivesearchsegmentation.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\slic.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\sparse_match_interpolators.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\structured_edge_detection.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\thinning.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\weighted_median_filter.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\opencl_kernels_ximgproc.cpp">
+      <Filter>Src\opencl\kernels\autogenerated</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\opencv_ximgproc_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\opencv_ximgproc_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc.hpp">
+      <Filter>Include\opencv2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\brightedges.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\color_match.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\deriche_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\disparity_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\edge_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\edgeboxes.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\edgepreserving_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\estimated_covariance.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\fast_hough_transform.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\fast_line_detector.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\fourier_descriptors.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\lsc.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\paillou_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\peilin.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\ridgefilter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\run_length_morphology.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\seeds.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\segmentation.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\slic.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\sparse_match_interpolator.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\structured_edge_detection.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\include\opencv2\ximgproc\weighted_median_filter.hpp">
+      <Filter>Include\opencv2\ximgproc</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\opencl_kernels_ximgproc.hpp">
+      <Filter>Src\opencl\kernels\autogenerated</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\advanced_types.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\dtfilter_cpu.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\dtfilter_cpu.inl.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\edgeaware_filters_common.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\cvconfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\opencv2\opencv_modules.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\28341a97c3b7268bf27e9c6214c8a66d\opencl_kernels_ximgproc.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\ximgproc\src\opencl\anisodiff.cl">
+      <Filter>Src\opencl\kernels</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\vs_version.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{11D6B05A-AD39-3002-BB95-8D85C945709C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2">
+      <UniqueIdentifier>{3CCCA740-10F4-3B9D-AB1C-09CD66C2BDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2\ximgproc">
+      <UniqueIdentifier>{E4F642CE-269C-3BAA-B503-49A67A28EE7A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{631A207B-E3D3-361E-9553-6087D4CA04DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\opencl">
+      <UniqueIdentifier>{2D054DF1-D007-3894-9750-D735DB230D76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\opencl\kernels">
+      <UniqueIdentifier>{79CD718B-BC41-3C76-B4F1-0DF376053332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\opencl\kernels\autogenerated">
+      <UniqueIdentifier>{5B46832E-C556-3064-8DF6-E1A590FCB7A7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

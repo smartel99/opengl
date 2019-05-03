@@ -1,0 +1,51 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/reg/test/test_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_reg",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/reg/test/test_reg.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_reg",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/reg/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_reg",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/reg/opencv_test_reg_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_reg",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_reg",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_reg"
+	}
+}

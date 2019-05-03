@@ -1,0 +1,16 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPkgConfig.cmake
+C:/Users/steph/Desktop/opencv_contrib-master/modules/matlab/cmake/init.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/build/3rdparty/ffmpeg/ffmpeg_version.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/3rdparty/ffmpeg/ffmpeg.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/CMakeLists.txt
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/gapi/cmake/DownloadADE.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/gapi/cmake/init.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/detect_dc1394.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/detect_dshow.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/detect_ffmpeg.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/detect_gstreamer.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/detect_msmf.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/videoio/cmake/init.cmake

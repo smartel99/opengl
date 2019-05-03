@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\679305ee8e00ab1694797e810e6ad138\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{11D6B05A-AD39-3002-BB95-8D85C945709C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\ocl\test_bgfg_mog2.cpp">
+      <Filter>Src\ocl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\ocl\test_dis.cpp">
+      <Filter>Src\ocl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\ocl\test_optflow_farneback.cpp">
+      <Filter>Src\ocl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\ocl\test_optflowpyrlk.cpp">
+      <Filter>Src\ocl</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_OF_accuracy.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_OF_reproducibility.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_accum.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_camshift.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_ecc.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_estimaterigid.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_kalman.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_main.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_optflowpyrlk.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\video\opencv_test_video_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\test\test_precomp.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\video\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\ocl">
+      <UniqueIdentifier>{2B311411-E5CF-3086-8945-3E8FC92769F6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

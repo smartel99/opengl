@@ -1,0 +1,126 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/include/opencv2/line_descriptor.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/include/opencv2/line_descriptor/descriptor.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/LSDDetector.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/binary_descriptor.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/binary_descriptor_matcher.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/draw.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/bitarray.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/bitops.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/line_descriptor/src/types.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/line_descriptor/opencv_line_descriptor_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_line_descriptor",
+				"Module"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/line_descriptor/vs_version.rc"
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/line_descriptor/opencv_line_descriptor_main.cpp"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_line_descriptor",
+			"Module"
+		],
+		"name" : "opencv_line_descriptor"
+	}
+}

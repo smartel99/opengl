@@ -1,0 +1,122 @@
+# Target labels
+ Extra
+ opencv_rgbd
+ Module
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/include/opencv2/rgbd.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/include/opencv2/rgbd/depth.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/include/opencv2/rgbd/kinfu.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/include/opencv2/rgbd/linemod.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/depth_cleaner.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/depth_registration.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/depth_to_3d.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/fast_icp.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/kinfu.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/kinfu_frame.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/linemod.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/normal.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/odometry.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/plane.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/tsdf.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/utils.cpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/opencl/icp.cl
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/opencl/kinfu_frame.cl
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/opencl/tsdf.cl
+ Extra
+ opencv_rgbd
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/opencl_kernels_rgbd.cpp
+ Extra
+ opencv_rgbd
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/opencl_kernels_rgbd.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/depth_to_3d.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/fast_icp.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/kinfu_frame.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/precomp.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/tsdf.hpp
+ Extra
+ opencv_rgbd
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/src/utils.hpp
+ Extra
+ opencv_rgbd
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/opencv_rgbd_pch.cpp
+ Extra
+ opencv_rgbd
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/opencv_rgbd_main.cpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/4395922bc4b8e8d031500199d5b205d1/opencl_kernels_rgbd.cpp.rule

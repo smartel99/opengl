@@ -1,0 +1,78 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_arucodetection.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_boarddetection.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_charucodetection.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_misc.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/aruco/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/aruco/opencv_test_aruco_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_aruco",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_aruco",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_aruco"
+	}
+}

@@ -1,0 +1,69 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/structured_light/test/test_faps.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/structured_light/test/test_getProjPixel.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/structured_light/test/test_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/structured_light/test/test_plane.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/structured_light/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/structured_light/opencv_test_structured_light_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_structured_light",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_structured_light",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_structured_light"
+	}
+}

@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/Users/steph/Desktop/opencv_contrib-master/modules/phase_unwrapping/CMakeLists.txt
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/dllmain.cpp.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/vs_version.rc.in

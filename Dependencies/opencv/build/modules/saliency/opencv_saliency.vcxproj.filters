@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\CmFile.cpp">
+      <Filter>Src\BING</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\CmShow.cpp">
+      <Filter>Src\BING</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\FilterTIG.cpp">
+      <Filter>Src\BING</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\ValStructVec.cpp">
+      <Filter>Src\BING</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\objectnessBING.cpp">
+      <Filter>Src\BING</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\motionSaliency.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\motionSaliencyBinWangApr2014.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\objectness.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\saliency.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\staticSaliency.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\staticSaliencyFineGrained.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\staticSaliencySpectralResidual.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\saliency\opencv_saliency_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\saliency\opencv_saliency_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\include\opencv2\saliency.hpp">
+      <Filter>Include\opencv2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\include\opencv2\saliency\saliencyBaseClasses.hpp">
+      <Filter>Include\opencv2\saliency</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\include\opencv2\saliency\saliencySpecializedClasses.hpp">
+      <Filter>Include\opencv2\saliency</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\CmFile.hpp">
+      <Filter>Src\BING</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\CmShow.hpp">
+      <Filter>Src\BING</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\CmTimer.hpp">
+      <Filter>Src\BING</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\BING\kyheader.hpp">
+      <Filter>Src\BING</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\cvconfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\opencv2\opencv_modules.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\saliency\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\saliency\vs_version.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2">
+      <UniqueIdentifier>{3CCCA740-10F4-3B9D-AB1C-09CD66C2BDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2\saliency">
+      <UniqueIdentifier>{B567BA01-0D11-38F5-8081-FAC1BF996E97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{631A207B-E3D3-361E-9553-6087D4CA04DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\BING">
+      <UniqueIdentifier>{027DCD1E-2F1F-326E-9812-3997A1506706}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

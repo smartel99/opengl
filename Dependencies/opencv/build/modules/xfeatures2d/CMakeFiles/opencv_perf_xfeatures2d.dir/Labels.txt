@@ -1,0 +1,45 @@
+# Target labels
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_daisy.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_latch.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_main.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_msd.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_surf.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_surf.cuda.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_surf.ocl.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_vgg.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/perf/perf_precomp.hpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/xfeatures2d/opencv_perf_xfeatures2d_pch.cpp
+ Extra
+ opencv_xfeatures2d
+ PerfTest

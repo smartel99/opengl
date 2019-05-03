@@ -1,0 +1,87 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_brisque.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_gmsd.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_main.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_mse.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_psnr.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_ssim.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "C:/Users/steph/Desktop/opencv_contrib-master/modules/quality/test/test_precomp.hpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		},
+		{
+			"file" : "D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/quality/opencv_test_quality_pch.cpp",
+			"labels" : 
+			[
+				"Extra",
+				"opencv_quality",
+				"AccuracyTest"
+			]
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"Extra",
+			"opencv_quality",
+			"AccuracyTest"
+		],
+		"name" : "opencv_test_quality"
+	}
+}

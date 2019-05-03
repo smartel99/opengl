@@ -1,0 +1,93 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeFindJavaCommon.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeParseArguments.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakePushCheckState.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckFortranFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckSymbolExists.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindBLAS.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindJNI.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindLAPACK.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/ProcessorCount.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/TestBigEndian.cmake
+C:/Program Files/CMake/share/cmake-3.14/Templates/CPackConfig.cmake.in
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/3.14.1/CMakeCCompiler.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/3.14.1/CMakeCXXCompiler.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/3.14.1/CMakeRCCompiler.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/3.14.1/CMakeSystem.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/3rdparty/ippicv/ippicv.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/CMakeLists.txt
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVCRTLinkage.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVCompilerOptimizations.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVCompilerOptions.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectApacheAnt.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectCXXCompiler.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectDirectX.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectOpenCL.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectPython.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectTrace.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDetectVTK.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVDownload.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVExtraTargets.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindFrameworks.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindIPP.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindIPPIW.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindLAPACK.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindLibsGUI.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindLibsGrfmt.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindLibsPerf.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindLibsVideo.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindMKL.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindOpenBLAS.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVFindProtobuf.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVGenABI.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVGenAndroidMK.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVGenConfig.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVGenHeaders.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVGenSetupVars.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVMinDepVersions.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVModule.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVPCHSupport.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVPackaging.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVUtils.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/OpenCVVersion.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/checks/directx.cpp
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/checks/opencl.cpp
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/checks/win32uitest.cpp
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/OpenCVConfig-version.cmake.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/OpenCVConfig.cmake.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/OpenCVConfig.root-WIN32.cmake.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/cmake_uninstall.cmake.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/custom_hal.hpp.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/cv_cpu_config.h.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/cvconfig.h.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/opencv_modules.hpp.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/setup_vars_win32.cmd.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/core/include/opencv2/core/version.hpp

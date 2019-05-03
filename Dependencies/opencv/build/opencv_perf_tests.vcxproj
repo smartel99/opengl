@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E98BE48-FECB-3475-B0D3-51CC3D083440}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>opencv_perf_tests</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\dev\plise_work_dammit\Dependencies\opencv\build\3rdparty\ippicv\ippicv_win\icv\include;D:\dev\plise_work_dammit\Dependencies\opencv\build\3rdparty\ippicv\ippicv_win\iw\include;D:\dev\plise_work_dammit\Dependencies\opencv\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\dev\plise_work_dammit\Dependencies\opencv\build\3rdparty\ippicv\ippicv_win\icv\include;D:\dev\plise_work_dammit\Dependencies\opencv\build\3rdparty\ippicv\ippicv_win\iw\include;D:\dev\plise_work_dammit\Dependencies\opencv\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\dev\plise_work_dammit\Dependencies\opencv\sources\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/dev/plise_work_dammit/Dependencies/opencv/sources/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/dev/plise_work_dammit/Dependencies/opencv/sources -BD:/dev/plise_work_dammit/Dependencies/opencv/build --check-stamp-file D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/dev/plise_work_dammit/Dependencies/opencv/sources/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindBLAS.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindJNI.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindLAPACK.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\ProcessorCount.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.14\Templates\CPackConfig.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeCCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeCXXCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeRCCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeSystem.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\3rdparty\ippicv\ippicv.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\CMakeLists.txt;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCRTLinkage.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCompilerOptimizations.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCompilerOptions.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectApacheAnt.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectCXXCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectDirectX.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectOpenCL.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectPython.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectTrace.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectVTK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDownload.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVExtraTargets.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindFrameworks.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindIPP.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindIPPIW.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLAPACK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsGUI.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsGrfmt.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsPerf.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsVideo.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindMKL.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindOpenBLAS.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindProtobuf.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenABI.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenAndroidMK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenConfig.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenHeaders.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenSetupVars.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVMinDepVersions.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVModule.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVPCHSupport.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVPackaging.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVUtils.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVVersion.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\directx.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\opencl.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\win32uitest.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig-version.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig.root-WIN32.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cmake_uninstall.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\custom_hal.hpp.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cv_cpu_config.h.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cvconfig.h.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\opencv_modules.hpp.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\setup_vars_win32.cmd.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\core\include\opencv2\core\version.hpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/dev/plise_work_dammit/Dependencies/opencv/sources/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/dev/plise_work_dammit/Dependencies/opencv/sources -BD:/dev/plise_work_dammit/Dependencies/opencv/build --check-stamp-file D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/dev/plise_work_dammit/Dependencies/opencv/sources/CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeFindJavaCommon.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeParseArguments.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckSymbolExists.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\CheckTypeSize.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindBLAS.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindGit.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindJNI.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindLAPACK.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\ProcessorCount.cmake;C:\Program Files\CMake\share\cmake-3.14\Modules\TestBigEndian.cmake;C:\Program Files\CMake\share\cmake-3.14\Templates\CPackConfig.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeCCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeCXXCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeRCCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\3.14.1\CMakeSystem.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\3rdparty\ippicv\ippicv.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\CMakeLists.txt;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCRTLinkage.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCompilerOptimizations.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVCompilerOptions.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectApacheAnt.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectCXXCompiler.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectDirectX.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectOpenCL.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectPython.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectTrace.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDetectVTK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVDownload.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVExtraTargets.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindFrameworks.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindIPP.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindIPPIW.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLAPACK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsGUI.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsGrfmt.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsPerf.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindLibsVideo.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindMKL.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindOpenBLAS.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVFindProtobuf.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenABI.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenAndroidMK.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenConfig.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenHeaders.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVGenSetupVars.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVMinDepVersions.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVModule.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVPCHSupport.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVPackaging.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVUtils.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\OpenCVVersion.cmake;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\directx.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\opencl.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\checks\win32uitest.cpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig-version.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\OpenCVConfig.root-WIN32.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cmake_uninstall.cmake.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\custom_hal.hpp.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cv_cpu_config.h.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\cvconfig.h.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\opencv_modules.hpp.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\cmake\templates\setup_vars_win32.cmd.in;D:\dev\plise_work_dammit\Dependencies\opencv\sources\modules\core\include\opencv2\core\version.hpp;D:\dev\plise_work_dammit\Dependencies\opencv\sources\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\dev\plise_work_dammit\Dependencies\opencv\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\ZERO_CHECK.vcxproj">
+      <Project>{EB427476-CFBC-3EC8-9E73-B82EB15522F1}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\bioinspired\opencv_perf_bioinspired.vcxproj">
+      <Project>{0D75B5DA-0E00-37A0-B3CC-3393E6FB6902}</Project>
+      <Name>opencv_perf_bioinspired</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\calib3d\opencv_perf_calib3d.vcxproj">
+      <Project>{C1667C85-A679-3028-8EE5-748224213F30}</Project>
+      <Name>opencv_perf_calib3d</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\core\opencv_perf_core.vcxproj">
+      <Project>{DBC8AF6B-137B-316C-BC41-0A7145320DE8}</Project>
+      <Name>opencv_perf_core</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\dnn\opencv_perf_dnn.vcxproj">
+      <Project>{E10B78C2-2089-3241-AD3A-46A4EE5BE3CA}</Project>
+      <Name>opencv_perf_dnn</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\features2d\opencv_perf_features2d.vcxproj">
+      <Project>{9980A76C-1DB9-316A-A846-94612AC5B18B}</Project>
+      <Name>opencv_perf_features2d</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\gapi\opencv_perf_gapi.vcxproj">
+      <Project>{0770A851-4164-3CCD-AF10-5AB93DA501E9}</Project>
+      <Name>opencv_perf_gapi</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\imgcodecs\opencv_perf_imgcodecs.vcxproj">
+      <Project>{E4B3F9D3-7EC6-3290-B7E2-90E3FCF73B71}</Project>
+      <Name>opencv_perf_imgcodecs</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\imgproc\opencv_perf_imgproc.vcxproj">
+      <Project>{D34DC5CB-11D8-3C5F-9CDC-1A4FB5654ABE}</Project>
+      <Name>opencv_perf_imgproc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\line_descriptor\opencv_perf_line_descriptor.vcxproj">
+      <Project>{4991AD9D-B1FB-3A88-8DFE-89F9C62B1E6D}</Project>
+      <Name>opencv_perf_line_descriptor</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\objdetect\opencv_perf_objdetect.vcxproj">
+      <Project>{781CC84D-F69A-3ECD-AFC3-F3F6FF1CC264}</Project>
+      <Name>opencv_perf_objdetect</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\optflow\opencv_perf_optflow.vcxproj">
+      <Project>{8FC90A2D-1130-3AED-AAD2-D1EF33E8E2C4}</Project>
+      <Name>opencv_perf_optflow</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\photo\opencv_perf_photo.vcxproj">
+      <Project>{248EB533-6585-3483-BE07-314EE9ED76E7}</Project>
+      <Name>opencv_perf_photo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\reg\opencv_perf_reg.vcxproj">
+      <Project>{E690A1D0-F410-3BD2-B1C3-E11F4F2950E1}</Project>
+      <Name>opencv_perf_reg</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\stereo\opencv_perf_stereo.vcxproj">
+      <Project>{AAB6FDE6-F307-3960-9DBB-C01D2813FDDB}</Project>
+      <Name>opencv_perf_stereo</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\stitching\opencv_perf_stitching.vcxproj">
+      <Project>{DDAFB474-C4B5-3E15-80D8-9D1B11132745}</Project>
+      <Name>opencv_perf_stitching</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\superres\opencv_perf_superres.vcxproj">
+      <Project>{16C8B7F8-54C3-3926-81EF-5485BEF48991}</Project>
+      <Name>opencv_perf_superres</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\tracking\opencv_perf_tracking.vcxproj">
+      <Project>{52F97AEE-938E-30FF-9042-9C83610E4617}</Project>
+      <Name>opencv_perf_tracking</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\video\opencv_perf_video.vcxproj">
+      <Project>{151EB45B-B4B1-35C5-9E18-A4284CCE246D}</Project>
+      <Name>opencv_perf_video</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\videoio\opencv_perf_videoio.vcxproj">
+      <Project>{9EF953CA-2BFC-3AD2-BD0E-16F0F97AB1E9}</Project>
+      <Name>opencv_perf_videoio</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\xfeatures2d\opencv_perf_xfeatures2d.vcxproj">
+      <Project>{FDD1C9C0-CC29-3EE4-9C3E-4D706C36FEB9}</Project>
+      <Name>opencv_perf_xfeatures2d</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\ximgproc\opencv_perf_ximgproc.vcxproj">
+      <Project>{72A080E8-B64F-3ADD-991E-D57CF2FF2606}</Project>
+      <Name>opencv_perf_ximgproc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\xphoto\opencv_perf_xphoto.vcxproj">
+      <Project>{243DB64B-8506-3451-A1A9-3776D34D22F6}</Project>
+      <Name>opencv_perf_xphoto</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

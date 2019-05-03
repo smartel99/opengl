@@ -130,7 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Server.cpp" />
     <ClCompile Include="src\PracticalSocket.cpp" />
   </ItemGroup>
   <ItemGroup>

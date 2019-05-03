@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\map.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mapaffine.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mapper.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mappergradaffine.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mappergradeuclid.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mappergradproj.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mappergradshift.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mappergradsimilar.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mapperpyramid.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mapprojec.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\mapshift.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\reg\opencv_reg_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\reg\opencv_reg_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\map.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mapaffine.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mapper.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mappergradaffine.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mappergradeuclid.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mappergradproj.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mappergradshift.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mappergradsimilar.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mapperpyramid.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mapprojec.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\include\opencv2\reg\mapshift.hpp">
+      <Filter>Include\opencv2\reg</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\cvconfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\opencv2\opencv_modules.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\reg\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\reg\vs_version.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2">
+      <UniqueIdentifier>{3CCCA740-10F4-3B9D-AB1C-09CD66C2BDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2\reg">
+      <UniqueIdentifier>{A7C5930B-8AF2-3D71-B24B-6E7EDD9E3A7B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{631A207B-E3D3-361E-9553-6087D4CA04DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\src\descriptor.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\src\quasi_dense_stereo.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\src\stereo_binary_bm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\src\stereo_binary_sgbm.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\stereo\opencv_stereo_pch.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\stereo\opencv_stereo_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\include\opencv2\stereo.hpp">
+      <Filter>Include\opencv2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\include\opencv2\stereo\descriptor.hpp">
+      <Filter>Include\opencv2\stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\include\opencv2\stereo\matching.hpp">
+      <Filter>Include\opencv2\stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\include\opencv2\stereo\quasi_dense_stereo.hpp">
+      <Filter>Include\opencv2\stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\include\opencv2\stereo\stereo.hpp">
+      <Filter>Include\opencv2\stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\src\precomp.hpp">
+      <Filter>Src</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\cvconfig.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\opencv2\opencv_modules.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\steph\Desktop\opencv_contrib-master\modules\stereo\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\dev\plise_work_dammit\Dependencies\opencv\build\modules\stereo\vs_version.rc">
+      <Filter>Src</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{F9713DCF-91DE-3E3E-A673-D7B3A565F19F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2">
+      <UniqueIdentifier>{3CCCA740-10F4-3B9D-AB1C-09CD66C2BDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\opencv2\stereo">
+      <UniqueIdentifier>{A0C9ACE9-8D0D-3B05-B8D9-110C8B0B9A58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{631A207B-E3D3-361E-9553-6087D4CA04DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{C954A7DB-C88F-3DDD-B181-DA9D3F141013}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

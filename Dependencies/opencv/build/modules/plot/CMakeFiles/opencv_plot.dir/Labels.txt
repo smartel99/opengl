@@ -1,0 +1,25 @@
+# Target labels
+ Extra
+ opencv_plot
+ Module
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/include/opencv2/plot.hpp
+ Extra
+ opencv_plot
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/src/plot.cpp
+ Extra
+ opencv_plot
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/plot/src/precomp.hpp
+ Extra
+ opencv_plot
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/opencv_plot_pch.cpp
+ Extra
+ opencv_plot
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/plot/opencv_plot_main.cpp

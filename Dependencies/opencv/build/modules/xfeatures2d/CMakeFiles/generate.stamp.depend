@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/CMakeLists.txt
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/cmake/download_boostdesc.cmake
+C:/Users/steph/Desktop/opencv_contrib-master/modules/xfeatures2d/cmake/download_vgg.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/dllmain.cpp.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/cmake/templates/vs_version.rc.in

@@ -1,0 +1,74 @@
+# Target labels
+ Main
+ opencv_objdetect
+ Module
+# Source files and their labels
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/include/opencv2/objdetect.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/include/opencv2/objdetect/detection_based_tracker.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/include/opencv2/objdetect/objdetect.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/cascadedetect.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/cascadedetect_convert.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/detection_based_tracker.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/hog.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/main.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/qrcode.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/opencl/cascadedetect.cl
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/opencl/objdetect_hog.cl
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/objdetect/opencl_kernels_objdetect.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/objdetect/opencl_kernels_objdetect.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/cascadedetect.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/objdetect/src/precomp.hpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/objdetect/opencv_objdetect_pch.cpp
+ Main
+ opencv_objdetect
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/objdetect/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/objdetect/opencv_objdetect_main.cpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/CMakeFiles/3aecc8974ca20e98afb60ef1f0467fa2/opencl_kernels_objdetect.cpp.rule

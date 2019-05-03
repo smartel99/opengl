@@ -1,0 +1,6 @@
+# CMake generation dependency list for this directory.
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/python/common.cmake
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/python/package/template/config-x.y.py.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/python/package/template/config.py.in
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/python/python3/CMakeLists.txt
+D:/dev/plise_work_dammit/Dependencies/opencv/sources/modules/python/python_loader.cmake

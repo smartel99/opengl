@@ -1,0 +1,49 @@
+# Target labels
+ Extra
+ opencv_ccalib
+ Module
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/include/opencv2/ccalib.hpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/include/opencv2/ccalib/multicalib.hpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/include/opencv2/ccalib/omnidir.hpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/include/opencv2/ccalib/randpattern.hpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/src/ccalib.cpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/src/multicalib.cpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/src/omnidir.cpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/src/randpattern.cpp
+ Extra
+ opencv_ccalib
+ Module
+C:/Users/steph/Desktop/opencv_contrib-master/modules/ccalib/src/precomp.hpp
+ Extra
+ opencv_ccalib
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/cvconfig.h
+D:/dev/plise_work_dammit/Dependencies/opencv/build/opencv2/opencv_modules.hpp
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/ccalib/opencv_ccalib_pch.cpp
+ Extra
+ opencv_ccalib
+ Module
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/ccalib/vs_version.rc
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/ccalib/opencv_ccalib_main.cpp

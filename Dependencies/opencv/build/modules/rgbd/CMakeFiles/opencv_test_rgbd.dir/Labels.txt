@@ -1,0 +1,37 @@
+# Target labels
+ Extra
+ opencv_rgbd
+ AccuracyTest
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_kinfu.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_main.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_normal.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_odometry.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_registration.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_utils.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/rgbd/test/test_precomp.hpp
+ Extra
+ opencv_rgbd
+ AccuracyTest
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/rgbd/opencv_test_rgbd_pch.cpp
+ Extra
+ opencv_rgbd
+ AccuracyTest

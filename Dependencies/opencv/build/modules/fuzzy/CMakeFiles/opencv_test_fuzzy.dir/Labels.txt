@@ -1,0 +1,29 @@
+# Target labels
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/test/test_f0.cpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/test/test_f1.cpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/test/test_image.cpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/test/test_main.cpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/fuzzy/test/test_precomp.hpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/fuzzy/opencv_test_fuzzy_pch.cpp
+ Extra
+ opencv_fuzzy
+ AccuracyTest

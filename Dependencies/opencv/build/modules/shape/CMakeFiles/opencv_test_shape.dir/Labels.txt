@@ -1,0 +1,21 @@
+# Target labels
+ Extra
+ opencv_shape
+ AccuracyTest
+# Source files and their labels
+C:/Users/steph/Desktop/opencv_contrib-master/modules/shape/test/test_main.cpp
+ Extra
+ opencv_shape
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/shape/test/test_shape.cpp
+ Extra
+ opencv_shape
+ AccuracyTest
+C:/Users/steph/Desktop/opencv_contrib-master/modules/shape/test/test_precomp.hpp
+ Extra
+ opencv_shape
+ AccuracyTest
+D:/dev/plise_work_dammit/Dependencies/opencv/build/modules/shape/opencv_test_shape_pch.cpp
+ Extra
+ opencv_shape
+ AccuracyTest
