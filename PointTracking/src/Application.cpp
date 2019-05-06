@@ -1,121 +1,170 @@
 // https://docs.opencv.org/2.4/opencv_tutorials.pdf
 // https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
+// https://www.intorobotics.com/how-to-detect-and-track-object-with-opencv/
+// https://www.learnopencv.com/selective-search-for-object-detection-cpp-python/
+// https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_table_of_contents_feature2d/py_table_of_contents_feature2d.html
 
-#include "opencv2/core.hpp"
-#include "opencv2/highgui.hpp"
-#include "opencv2/imgproc.hpp"
-#include "opencv2/video/tracking.hpp"
-#include "opencv2/core/ocl.hpp"
+#include <sstream>
+#include <iostream>
+#include <ctime>
+
+#include <opencv2/ximgproc/segmentation.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/imgproc.hpp>
 
 #include "librealsense2/rs.hpp"
 
-#include <ctype.h>
-#include <time.h>
-#include <sstream>
-#include <iostream>
-
 using namespace cv;
-// Global Variables.
-Mat src;
-Mat hsv;
-Mat mask;
-
-int low = 20, up = 20;
-
-// Function Headers.
-void Hist_and_Backproj();
-void pickPoint(int event, int x, int y, int, void*);
+using namespace cv::ximgproc::segmentation;
 
 
-int main(int argv, char** argc)
-{
+void PrintRealsenseError(const rs2::error& e);
+
+int main(int argc, char** argv) {
+	/// --- REALSENSE INIT ---
 	rs2::pipeline pipe;
-
-	// Create a configuration for configuring the pipeline with a non default profile.
-	rs2::config cfg;
-
-	// Add desired streams to config.
-	cfg.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 30);
-
-	// Instruct pipeline to start streaming with the requested configuration.
-	pipe.start(cfg);
-
-	// Camera warm up - dropping several first frames to let auto-exposure stabilize.
 	rs2::frameset frames;
+
+	rs2::config cfg;
+	cfg.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 30);
+	try {
+		pipe.start(cfg);
+	}
+	catch (const rs2::error & e) {
+		PrintRealsenseError(e);
+		waitKey(0);
+		return(-1);
+	}
 	for (int i = 0; i < 30; i++) {
-		// Wait for all configured streams to produce a frame.
+		// Let auto exposure stabilize.
 		frames = pipe.wait_for_frames();
 	}
+	rs2::video_frame vf = frames.get_color_frame();
+	/// --- END OF REALSENSE INIT ---
 
-	// Tracking init stuff.
-	std::string trackerType = "KCF";
+	/// --- OPENCV INIT ---
+	// Speed up using multithreads.
+	setUseOptimized(true);
+	setNumThreads(12);
 
-	Ptr<Tracker> tracker;
+	// Create selective search segmentation object using default parameters.
+	Ptr<SelectiveSearchSegmentation> ss = createSelectiveSearchSegmentation();
 
-	// GUI stuff.
-	namedWindow("Original", WINDOW_AUTOSIZE);
-	namedWindow("Mask", WINDOW_AUTOSIZE);
-	namedWindow("BackProj", WINDOW_AUTOSIZE);
+	namedWindow("Tracking", WINDOW_AUTOSIZE);
+	/// --- END OF OPENCV INIT ---
 
-	// Set track bars for flood fill thresholds.
-	createTrackbar("Low thresh", "BackProj", &low, 255, 0);
-	createTrackbar("High thresh", "BackProj", &up, 255, 0);
-	// Set a mouse callback
-	setMouseCallback("BackProj", pickPoint, 0);
+	// Number of region proposals to show.
+	int numShowRects = 100;
+	// Increment to increase/decrease total number of region proposals to be shown.
+	int increment = 20;
 
-	while (waitKey(1) == -1) {
-		frames = pipe.wait_for_frames();
-		Mat temp = Mat(Size(640, 480), CV_8UC3, (void*)frames.get_color_frame().get_data(), Mat::AUTO_STEP);
-		bilateralFilter(temp, src, 5, 10, 2.5);
-		cvtColor(src, hsv, COLOR_BGR2HSV);
-		imshow("Original", temp);
-		Hist_and_Backproj();
+	Mat im = Mat(Size(640, 480), CV_8UC3, (void*)vf.get_data(), Mat::AUTO_STEP);
+	ss->setBaseImage(im);
+	ss->switchToSelectiveSearchFast();
+	int newHeight = 200;
+	int newWidth = im.cols * newHeight / im.rows;
+
+	while (1) {
+
+		if (pipe.poll_for_frames(&frames))
+		{
+			// Start timer.
+			double timer = (double)getTickCount();
+
+			im = Mat(Size(640, 480), CV_8UC3, (void*)frames.get_color_frame().get_data(), Mat::AUTO_STEP);
+			// Resize image.
+			resize(im, im, Size(newWidth, newHeight));
+			ss->setBaseImage(im);
+			ss->switchToSelectiveSearchFast();
+
+
+			// Run selective search segmentation on input image.
+			std::vector<Rect> rects;
+			ss->process(rects);
+
+			// Calculate FPS.
+			float fps = getTickFrequency() / ((double)getTickCount() - timer);
+			std::cout << "FPS: " << fps << '\r';
+
+			// Iterate over all the region proposals.
+#pragma omp parallel for schedule(dynamic)  // Using OpenMP to try to parallelise the loop.
+			for (int i = 0; i < rects.size(); i++) {
+				if (i < numShowRects) {
+					rectangle(im, rects[i], Scalar(0, 255, 0));
+				}
+				else
+					break;
+			}
+
+			// Show output.
+			imshow("Tracking", im);
+
+			// Record key press.
+			int k = waitKey(1);
+
+			if (k != -1) {
+				switch (k) {
+					// m is pressed.
+				case 109:
+					// Increase total number of rectangles to show by increment.
+					numShowRects += increment;
+					break;
+					// l is pressed
+				case 108:
+					if (numShowRects > increment)
+						// Decrease total number of rectangles to show by increment.
+						numShowRects -= increment;
+					break;
+					// q is pressed.
+				case 113:
+					return(0);
+				}
+			}
+		}
 	}
-	return 0;
 }
 
-void pickPoint(int event, int x, int y, int, void*) {
-	if (event != EVENT_LBUTTONDOWN)
-		return;
+void PrintRealsenseError(const rs2::error & e) {
+	const char* function = e.get_failed_function().c_str();
+	const char* what = e.what();
+	const char* type;
+	switch (e.get_type())
+	{
+	case RS2_EXCEPTION_TYPE_BACKEND:
+		type = "Back end";
+		break;
+	case RS2_EXCEPTION_TYPE_CAMERA_DISCONNECTED:
+		type = "Camera Disconnected";
+		break;
+	case RS2_EXCEPTION_TYPE_COUNT:
+		type = "Count";
+		break;
+	case RS2_EXCEPTION_TYPE_DEVICE_IN_RECOVERY_MODE:
+		type = "Device in Recovery Mode";
+		break;
+	case RS2_EXCEPTION_TYPE_INVALID_VALUE:
+		type = "Invalid Value";
+		break;
+	case RS2_EXCEPTION_TYPE_IO:
+		type = "IO (What is that even supposed to be?)";
+		break;
+	case RS2_EXCEPTION_TYPE_NOT_IMPLEMENTED:
+		type = "Not Implemented (Oh We ArE iNtEl, OnE oF tHe BiGgEsT tEcH cOmPaNiEs "
+			"In ThE wOrLd, YeT wE cAn'T pRoViDe GoOd CoMpLeTe ApIs)";
+		break;
+	case RS2_EXCEPTION_TYPE_UNKNOWN:
+		type = "Unknown (Oof)";
+		break;
+	case RS2_EXCEPTION_TYPE_WRONG_API_CALL_SEQUENCE:
+		type = "Wrong API Call Sequence";
+		break;
+	default:
+		type = "Something probably went really wrong if you see this message";
+	}
 
-	// Fill and get the mask.
-	Point seed = Point(x, y);
-
-	int newMaskVal = 255;
-	Scalar newVal = Scalar(120, 120, 120);
-
-	int connectivity = 8;
-	int flags = connectivity + (newMaskVal << 8) + FLOODFILL_FIXED_RANGE + FLOODFILL_MASK_ONLY;
-
-	Mat mask2 = Mat::zeros(src.rows + 2, src.cols + 2, CV_8U);
-	floodFill(src, mask2, seed, newVal, 0, Scalar(low, low, low), Scalar(up, up, up), flags);
-	mask = mask2(Range(1, mask2.rows - 1), Range(1, mask2.cols - 1));
-
-	imshow("Mask", mask);
-
-	Hist_and_Backproj();
-}
-
-void Hist_and_Backproj() {
-	Mat hist;
-	int h_bins = 30, s_bins = 32;
-	int histSize[] = { h_bins, s_bins };
-
-	float h_range[] = { 0, 180 };
-	float s_range[] = { 0, 256 };
-	const float* ranges[] = { h_range, s_range };
-
-	int channels[] = { 0, 1 };
-
-	// Get the Histogram and normalize it.
-	calcHist(&hsv, 1, channels, mask, hist, 2, histSize, ranges, true, false);
-
-	normalize(hist, hist, 0, 255, NORM_MINMAX, -1, Mat());
-
-	// Get back projection.
-	Mat backproj;
-	calcBackProject(&hsv, 1, channels, hist, backproj, ranges, 1, true);
-
-	// Draw the backproj.
-	imshow("BackProj", backproj);
+	std::cout << "An error occurred!: " <<
+		"\n\tType: " << type <<
+		"\n\tIn Function: " << function <<
+		"\n\tError Message: " << what << std::endl;
 }
