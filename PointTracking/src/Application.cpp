@@ -13,10 +13,10 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/tracking.hpp>
+#include <opencv2/video/background_segm.hpp>
 
 #include "librealsense2/rs.hpp"
 
-#include "vendor/Shadow-Detection.h"
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 
