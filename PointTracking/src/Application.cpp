@@ -16,19 +16,22 @@
 
 #include "librealsense2/rs.hpp"
 
+#include "vendor/Shadow-Detection.h"
+
 #define ASSERT(x) if (!(x)) __debugbreak();
 
 using namespace cv;
 
-int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
 void PrintRealsenseError(const rs2::error& e);
-void FindBiggestContour(const Mat* src, const Mat* output, Rect inital_box, int r);
-void FindTopMostContour(const Mat* src, const Mat* output, Rect initial_box, int r);
+Rect FindTopMostContour(const Mat* src, const Mat* output, Rect initial_box, int r);
+Rect GetTopRect(std::vector<Rect> Rects);
+Rect FindBiggestContour(const Mat* src, const Mat* output, Rect initial_box, int r);
+int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
 
 int thresh = 20;
-int thresh_multiplier = 5;
+int thresh_multiplier = 1;
 int max_recursion = 10;
-
+int frame_threshold = 2;
 
 int main(int argc, char** argv) {
 	/// --- REALSENSE INIT ---
@@ -60,34 +63,65 @@ int main(int argc, char** argv) {
 	setNumThreads(12);
 
 	namedWindow("New", WINDOW_AUTOSIZE);
-	namedWindow("Thresh", WINDOW_FREERATIO);
+	namedWindow("knn", WINDOW_AUTOSIZE);
 
-	createTrackbar(" Threshold", "New", &thresh, 255, nullptr);
-	createTrackbar(" Threshold Multiplier", "New", &thresh_multiplier, 5, nullptr);
-	createTrackbar(" Max Recursion", "New", &max_recursion, 10, nullptr);
-
+	std::cout << "Settings:\n\t" <<
+		"Line Detection Threshold: " << thresh << "\n\t" <<
+		"Threshold Multiplier For Recursion: " << thresh_multiplier << "\n\t" <<
+		"Maximum Recursion Level: " << max_recursion << "\n\t" <<
+		"Frame Detection Threshold: " << frame_threshold << std::endl;
 	/// --- END OF OPENCV INIT ---
 
-	int updateInterval = 0;
+	/// --- SHADOW REMOVER INIT ---
+	Ptr<BackgroundSubtractorKNN> bs_KNN = createBackgroundSubtractorKNN();
+	bs_KNN->setShadowThreshold(0.01f);
+	/// --- END OF SHADOW REMOVER INIT ---
+
+	Rect TopBox_bc(0, 0, 0, 0);
+	Rect PreciseBBox(0, 0, 0, 0);
 
 	while (waitKey(1) == -1) {
+		// If a new frame is available
 		if (pipe.poll_for_frames(&frames)) {
-
 			// Start timer.
 			double timer = (double)getTickCount();
 
+			// Get the newest color frame as a cv::Mat.
 			new_image = Mat(Size(640, 480), CV_8UC3, (void*)frames.get_color_frame().get_data(), Mat::AUTO_STEP);
 
+			// Remove the shadows
+			Mat knn;
+			bs_KNN->apply(new_image, knn);	// Apply Background Subtraction.
+			blur(knn, knn, Size(10,10), Point(-1, -1));	// Blur the resulting image.
+			threshold(knn, knn, 200, 255, THRESH_BINARY);// Remove the shadows.
+			imshow("knn", knn);	// Show the image.
+
 			// --- DETECTION ---
-			Mat diff, diff_gray;
-			Mat output = new_image.clone();
-			absdiff(new_image, old_image, diff);
+			Mat output = new_image.clone();	// Duplicate the newest frame.
 
-			// Convert to gray scale and apply blur.
-			cvtColor(diff, diff_gray, COLOR_BGR2GRAY);
-			blur(diff_gray, diff_gray, Size(3, 3));
+			// Recursively find the biggest contour in the frame.
+			Rect bbox_bc = FindBiggestContour(&knn, &output, Rect(0, 0, 0, 0), 0);
 
-			FindTopMostContour(&diff_gray, &output, Rect(0, 0, 0, 0), 0);
+			// If a contour has been found
+			if (bbox_bc.area() > 0) {
+				TopBox_bc = bbox_bc;
+				// Crop the image to only have the region that is interesting for us.
+				Mat cropped = new_image.clone();
+				cropped = cropped(bbox_bc);
+				Mat cg;
+				cvtColor(cropped, cg, COLOR_BGR2GRAY);
+				// Find the biggest contour in that region.
+				PreciseBBox = FindBiggestContour(&cg, &output, bbox_bc, 0);
+			}
+			// If no contour was found
+			else {
+				// Reset the boundary boxes.
+				TopBox_bc = Rect(0, 0, 0, 0);
+				PreciseBBox = Rect(0, 0, 0, 0);
+			}
+
+			// Draw a rectangle around the contour we found.
+			rectangle(output, PreciseBBox, Scalar(0, 255, 0), 1, 8, 0);
 
 			// --- END OF DETECTION ---
 
@@ -96,47 +130,25 @@ int main(int argc, char** argv) {
 			// Display FPS on frame.
 			std::ostringstream oss;
 			oss << "FPS : " << (int(fps));
-			putText(output, oss.str(), Point(100, 20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
+			putText(output, oss.str(), Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
 
+			// Display the image.
 			imshow("New", output);
-			//imshow("Thresh", cropImage);
 		}
 	}
 }
-
-void FindBiggestContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
-	if ((initial_box.area() <= 10 && initial_box.area() != 0) || r >= 5) {
-		return;
-	}
-
-	std::vector<std::vector<Point>> contours;
-	std::vector<Vec4i> hierarchy;
-
-	Mat threshold_output;
-
-	// Detect edges using Threshold.
-	threshold(*src, threshold_output, thresh * (thresh_multiplier + r), 255, THRESH_BINARY);
-	// Find contours
-	findContours(threshold_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-	Rect boundRect;
-	int biggestContour = GetMaxAreaContourId(contours);
-	if (biggestContour != -1) {
-		boundRect = boundingRect(Mat(contours[biggestContour]));
-		if (boundRect.area() > 10) {
-			Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
-				boundRect.width, boundRect.height);
-			rectangle(*output, mapped_rect, Scalar(0, 0, 255), 2, 8, 0);
-			Mat cropped = src->clone();
-			cropped = cropped(boundRect);
-			std::ostringstream oss;
-			oss << "Rec " << r;
-			namedWindow(oss.str(), WINDOW_FREERATIO);
-			imshow(oss.str(), cropped);
-			FindBiggestContour(&cropped, output, mapped_rect, r + 1);
-
+int GetMaxAreaContourId(std::vector<std::vector<Point>> contours) {
+	// Threshold
+	double maxArea = 40;
+	int maxAreaContourId = -1;
+	for (int j = 0; j < contours.size(); j++) {
+		double newArea = contourArea(contours.at(j));
+		if (newArea > maxArea) {
+			maxArea = newArea;
+			maxAreaContourId = j;
 		}
 	}
+	return maxAreaContourId;
 }
 
 Rect GetTopRect(std::vector<Rect> Rects)
@@ -156,9 +168,40 @@ Rect GetTopRect(std::vector<Rect> Rects)
 		return Rects[topRectId];
 }
 
-void FindTopMostContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
-	if ((initial_box.area() <= 10 && initial_box.area() != 0) || r >= 5) {
-		return;
+Rect FindBiggestContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
+	if ((initial_box.area() <= 10 && initial_box.area() != 0) || r >= max_recursion) {
+		return initial_box;
+	}
+
+	std::vector<std::vector<Point>> contours;
+	std::vector<Vec4i> hierarchy;
+
+	Mat threshold_output;
+
+	// Detect edges using Threshold.
+	threshold(*src, threshold_output, thresh * (thresh_multiplier + r), 255, THRESH_BINARY);
+	// Find contours
+	findContours(threshold_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+
+	Rect boundRect;
+	int biggestContour = GetMaxAreaContourId(contours);
+	if (biggestContour != -1) {
+		boundRect = boundingRect(Mat(contours[biggestContour]));
+		Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
+			boundRect.width, boundRect.height);
+		if (boundRect.area() > 10) {
+			Mat cropped = src->clone();
+			cropped = cropped(boundRect);
+			mapped_rect = FindBiggestContour(&cropped, output, mapped_rect, r + 1);
+		}
+		return mapped_rect;
+	}
+	return initial_box;
+}
+
+Rect FindTopMostContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
+	if ((initial_box.area() <= 10 && r != 0) || r >= max_recursion) {
+		return initial_box;
 	}
 
 	std::vector<std::vector<Point>> contours;
@@ -177,34 +220,14 @@ void FindTopMostContour(const Mat * src, const Mat * output, Rect initial_box, i
 	}
 	Rect boundRect = GetTopRect(boundRects);
 
-
+	Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
+		boundRect.width, boundRect.height);
 	if (boundRect.area() > 10) {
-		Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
-			boundRect.width, boundRect.height);
-		rectangle(*output, mapped_rect, Scalar(0, 0, 255), 2, 8, 0);
 		Mat cropped = src->clone();
 		cropped = cropped(boundRect);
-		std::ostringstream oss;
-		oss << "Rec " << r;
-		namedWindow(oss.str(), WINDOW_FREERATIO);
-		imshow(oss.str(), cropped);
-		FindTopMostContour(&cropped, output, mapped_rect, r + 1);
+		mapped_rect = FindTopMostContour(&cropped, output, mapped_rect, r + 1);
 	}
-
-}
-
-int GetMaxAreaContourId(std::vector<std::vector<Point>> contours) {
-	// Threshold
-	double maxArea = 40;
-	int maxAreaContourId = -1;
-	for (int j = 0; j < contours.size(); j++) {
-		double newArea = contourArea(contours.at(j));
-		if (newArea > maxArea) {
-			maxArea = newArea;
-			maxAreaContourId = j;
-		}
-	}
-	return maxAreaContourId;
+	return mapped_rect;
 }
 
 void PrintRealsenseError(const rs2::error & e) {
