@@ -27,6 +27,7 @@ Rect FindTopMostContour(const Mat* src, const Mat* output, Rect initial_box, int
 Rect GetTopRect(std::vector<Rect> Rects);
 Rect FindBiggestContour(const Mat* src, const Mat* output, Rect initial_box, int r);
 int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
+void getXYPoint(Mat src, Rect region, double* x, double* y);
 
 int thresh = 20;
 int thresh_multiplier = 1;
@@ -64,6 +65,10 @@ int main(int argc, char** argv) {
 
 	namedWindow("New", WINDOW_AUTOSIZE);
 	namedWindow("knn", WINDOW_AUTOSIZE);
+	namedWindow("hbp", WINDOW_FREERATIO);
+	namedWindow("sbp", WINDOW_FREERATIO);
+	namedWindow("vbp", WINDOW_FREERATIO);
+	namedWindow("cknn", WINDOW_FREERATIO);
 
 	std::cout << "Settings:\n\t" <<
 		"Line Detection Threshold: " << thresh << "\n\t" <<
@@ -92,7 +97,7 @@ int main(int argc, char** argv) {
 			// Remove the shadows
 			Mat knn;
 			bs_KNN->apply(new_image, knn);	// Apply Background Subtraction.
-			blur(knn, knn, Size(10,10), Point(-1, -1));	// Blur the resulting image.
+			blur(knn, knn, Size(10, 10), Point(-1, -1));	// Blur the resulting image.
 			threshold(knn, knn, 200, 255, THRESH_BINARY);// Remove the shadows.
 			imshow("knn", knn);	// Show the image.
 
@@ -112,6 +117,15 @@ int main(int argc, char** argv) {
 				cvtColor(cropped, cg, COLOR_BGR2GRAY);
 				// Find the biggest contour in that region.
 				PreciseBBox = FindBiggestContour(&cg, &output, bbox_bc, 0);
+
+				// Get (x,y) coordinate of the point.
+				double x = 0;
+				double y = 0;
+				getXYPoint(knn(PreciseBBox), PreciseBBox, &x, &y);
+				if (x > 0 && y > 0) {
+					std::cout << "Found a point!: (" << x << ", " << y << ")\n";
+					circle(output, Point((int)x, (int)y), 5, Scalar(0, 0, 255), -1, 8, 0);
+				}
 			}
 			// If no contour was found
 			else {
@@ -122,8 +136,8 @@ int main(int argc, char** argv) {
 
 			// Draw a rectangle around the contour we found.
 			rectangle(output, PreciseBBox, Scalar(0, 255, 0), 1, 8, 0);
-
 			// --- END OF DETECTION ---
+
 
 			// Calculate FPS.
 			float fps = getTickFrequency() / ((double)getTickCount() - timer);
@@ -149,6 +163,22 @@ int GetMaxAreaContourId(std::vector<std::vector<Point>> contours) {
 		}
 	}
 	return maxAreaContourId;
+}
+
+void getXYPoint(Mat src, Rect region, double* point_x, double* point_y)
+{
+	Point p = region.tl();
+	double tot_x = 0;
+	int count_x = 0;
+	for (int x = 0; x < src.cols; x++) {
+		if (src.data[x] != 0) {
+			tot_x += x;
+			count_x++;
+		}
+	}
+	*point_x = p.x + (tot_x / count_x);
+	*point_y = p.y;
+	return;
 }
 
 Rect GetTopRect(std::vector<Rect> Rects)
