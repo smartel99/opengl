@@ -12,294 +12,121 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
-#include <opencv2/tracking.hpp>
 #include <opencv2/video/background_segm.hpp>
 
-#include "librealsense2/rs.hpp"
+#include <librealsense2/rs.hpp>
+
+#include "vendor/imgui/imgui.h"
+#include "vendor/imgui/imgui_impl_glfw.h"
+#include "vendor/imgui/imgui_impl_opengl3.h"
+
+#define IMGUI_IMPL_OPENGL_LOADER_GLEW
+#define GLEW_STATIC
+#include <gl/glew.h>
+
+#include <GLFW/glfw3.h>
+#include "Realsense.h"
 
 
 #define ASSERT(x) if (!(x)) __debugbreak();
 
+void glfw_error_callback(int error, const char* description);
+
 using namespace cv;
 
-void PrintRealsenseError(const rs2::error& e);
-Rect FindTopMostContour(const Mat* src, const Mat* output, Rect initial_box, int r);
-Rect GetTopRect(std::vector<Rect> Rects);
-Rect FindBiggestContour(const Mat* src, const Mat* output, Rect initial_box, int r);
-int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
-void getXYPoint(Mat src, Rect region, double* x, double* y);
-
-int thresh = 20;
-int thresh_multiplier = 1;
-int max_recursion = 10;
-int frame_threshold = 2;
-
 int main(int argc, char** argv) {
-	/// --- REALSENSE INIT ---
-	rs2::pipeline pipe;
-	rs2::frameset frames;
+	// Initialize GLFW.
+	glfwSetErrorCallback(glfw_error_callback);
 
-	rs2::config cfg;
-	cfg.enable_stream(RS2_STREAM_COLOR, 640, 480, RS2_FORMAT_BGR8, 30);
-	try {
-		pipe.start(cfg);
+	if (!glfwInit()) {
+		// Initialization failed.
+		glfw_error_callback(0, "Couldn't initialize GLFW!");
+		exit(EXIT_FAILURE);
 	}
-	catch (const rs2::error & e) {
-		PrintRealsenseError(e);
-		waitKey(0);
-		return(-1);
+
+	// Decide GL+GLSL versions.
+#if __APPLE__
+	// GL 3.2 + GLSL 150.
+	const char* glsl_version = "#version 150"); 
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // Required on Mac
+#else
+	// GL 3.0 + GLSL 130
+	const char* glsl_version = "#version 130";
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#endif
+
+	// Create window with graphics context.
+	GLFWwindow* window = glfwCreateWindow(800, 600, "Eldryn", NULL, NULL);
+	if (!window) {
+		// Window or context creation failed.
+		glfw_error_callback(0, "Couldn't create window or context!");
+		exit(EXIT_FAILURE);
 	}
-	for (int i = 0; i < 30; i++) {
-		// Let auto exposure stabilize.
-		frames = pipe.wait_for_frames();
+
+	glfwMakeContextCurrent(window);
+	glfwSwapInterval(0);
+
+	// Initialize OpenGL loader (GLEW).
+	bool err = glewInit() != GLEW_OK;
+	if (err) {
+		fprintf(stderr, "Failed to initialize GLEW OpenGL loader!\n");
+		exit(EXIT_FAILURE);
 	}
-	rs2::video_frame vf = frames.get_color_frame();
-	Mat old_image = Mat(Size(640, 480), CV_8UC3, (void*)vf.get_data(), Mat::AUTO_STEP);
-	Mat new_image = Mat(Size(640, 480), CV_8UC3, (void*)vf.get_data(), Mat::AUTO_STEP);
-	/// --- END OF REALSENSE INIT ---
 
-	/// --- OPENCV INIT ---
-	// Speed up using multithreads.
-	setUseOptimized(true);
-	setNumThreads(12);
+	// Setup Dear ImGui context.
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-	namedWindow("New", WINDOW_AUTOSIZE);
-	namedWindow("knn", WINDOW_AUTOSIZE);
-	namedWindow("hbp", WINDOW_FREERATIO);
-	namedWindow("sbp", WINDOW_FREERATIO);
-	namedWindow("vbp", WINDOW_FREERATIO);
-	namedWindow("cknn", WINDOW_FREERATIO);
+	// Setup Dear ImGui style.
+	ImGui::StyleColorsDark();
 
-	std::cout << "Settings:\n\t" <<
-		"Line Detection Threshold: " << thresh << "\n\t" <<
-		"Threshold Multiplier For Recursion: " << thresh_multiplier << "\n\t" <<
-		"Maximum Recursion Level: " << max_recursion << "\n\t" <<
-		"Frame Detection Threshold: " << frame_threshold << std::endl;
-	/// --- END OF OPENCV INIT ---
+	// Setup Platform/Renderer bindings.
+	ImGui_ImplGlfw_InitForOpenGL(window, true);
+	ImGui_ImplOpenGL3_Init(glsl_version);
 
-	/// --- SHADOW REMOVER INIT ---
-	Ptr<BackgroundSubtractorKNN> bs_KNN = createBackgroundSubtractorKNN();
-	bs_KNN->setShadowThreshold(0.01f);
-	/// --- END OF SHADOW REMOVER INIT ---
+	Realsense camera;
 
-	Rect TopBox_bc(0, 0, 0, 0);
-	Rect PreciseBBox(0, 0, 0, 0);
+	while (!glfwWindowShouldClose(window)) {
+		// Poll and handle events (inputs, window resize, etc.).
+		glfwPollEvents();
 
-	while (waitKey(1) == -1) {
-		// If a new frame is available
-		if (pipe.poll_for_frames(&frames)) {
-			// Start timer.
-			double timer = (double)getTickCount();
+		// Start the Dear ImGui frame.
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
-			// Get the newest color frame as a cv::Mat.
-			new_image = Mat(Size(640, 480), CV_8UC3, (void*)frames.get_color_frame().get_data(), Mat::AUTO_STEP);
-
-			// Remove the shadows
-			Mat knn;
-			bs_KNN->apply(new_image, knn);	// Apply Background Subtraction.
-			blur(knn, knn, Size(10, 10), Point(-1, -1));	// Blur the resulting image.
-			threshold(knn, knn, 200, 255, THRESH_BINARY);// Remove the shadows.
-			imshow("knn", knn);	// Show the image.
-
-			// --- DETECTION ---
-			Mat output = new_image.clone();	// Duplicate the newest frame.
-
-			// Recursively find the biggest contour in the frame.
-			Rect bbox_bc = FindBiggestContour(&knn, &output, Rect(0, 0, 0, 0), 0);
-
-			// If a contour has been found
-			if (bbox_bc.area() > 0) {
-				TopBox_bc = bbox_bc;
-				// Crop the image to only have the region that is interesting for us.
-				Mat cropped = new_image.clone();
-				cropped = cropped(bbox_bc);
-				Mat cg;
-				cvtColor(cropped, cg, COLOR_BGR2GRAY);
-				// Find the biggest contour in that region.
-				PreciseBBox = FindBiggestContour(&cg, &output, bbox_bc, 0);
-
-				// Get (x,y) coordinate of the point.
-				double x = 0;
-				double y = 0;
-				getXYPoint(knn(PreciseBBox), PreciseBBox, &x, &y);
-				if (x > 0 && y > 0) {
-					std::cout << "Found a point!: (" << x << ", " << y << ")\n";
-					circle(output, Point((int)x, (int)y), 5, Scalar(0, 0, 255), -1, 8, 0);
-				}
-			}
-			// If no contour was found
-			else {
-				// Reset the boundary boxes.
-				TopBox_bc = Rect(0, 0, 0, 0);
-				PreciseBBox = Rect(0, 0, 0, 0);
-			}
-
-			// Draw a rectangle around the contour we found.
-			rectangle(output, PreciseBBox, Scalar(0, 255, 0), 1, 8, 0);
-			// --- END OF DETECTION ---
-
-
-			// Calculate FPS.
-			float fps = getTickFrequency() / ((double)getTickCount() - timer);
-			// Display FPS on frame.
-			std::ostringstream oss;
-			oss << "FPS : " << (int(fps));
-			putText(output, oss.str(), Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.75, Scalar(50, 170, 50), 2);
-
-			// Display the image.
-			imshow("New", output);
+		if (camera.has_failed) {
+			fprintf(stderr, "Camera has failed!");
+			exit(EXIT_FAILURE);
 		}
+		camera.OnUpdate();
+		camera.OnRender();
+		camera.OnImGuiRender();
+
+		// Rendering.
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		glfwSwapBuffers(window);
 	}
-}
-int GetMaxAreaContourId(std::vector<std::vector<Point>> contours) {
-	// Threshold
-	double maxArea = 40;
-	int maxAreaContourId = -1;
-	for (int j = 0; j < contours.size(); j++) {
-		double newArea = contourArea(contours.at(j));
-		if (newArea > maxArea) {
-			maxArea = newArea;
-			maxAreaContourId = j;
-		}
-	}
-	return maxAreaContourId;
+
+	// Cleanup.
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui::DestroyContext();
+
+	glfwDestroyWindow(window);
+	glfwTerminate();
+
+	exit(EXIT_SUCCESS);
 }
 
-void getXYPoint(Mat src, Rect region, double* point_x, double* point_y)
+void glfw_error_callback(int error, const char* description)
 {
-	Point p = region.tl();
-	double tot_x = 0;
-	int count_x = 0;
-	for (int x = 0; x < src.cols; x++) {
-		if (src.data[x] != 0) {
-			tot_x += x;
-			count_x++;
-		}
-	}
-	*point_x = p.x + (tot_x / count_x);
-	*point_y = p.y;
-	return;
-}
-
-Rect GetTopRect(std::vector<Rect> Rects)
-{
-	// Threshold
-	double maxY = 999999;
-	int topRectId = -1;
-	for (int j = 0; j < Rects.size(); j++) {
-		double y = Rects[j].y;
-		if (y < maxY) {
-			topRectId = j;
-		}
-	}
-	if (topRectId == -1)
-		return Rect(0, 0, 0, 0);
-	else
-		return Rects[topRectId];
-}
-
-Rect FindBiggestContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
-	if ((initial_box.area() <= 10 && initial_box.area() != 0) || r >= max_recursion) {
-		return initial_box;
-	}
-
-	std::vector<std::vector<Point>> contours;
-	std::vector<Vec4i> hierarchy;
-
-	Mat threshold_output;
-
-	// Detect edges using Threshold.
-	threshold(*src, threshold_output, thresh * (thresh_multiplier + r), 255, THRESH_BINARY);
-	// Find contours
-	findContours(threshold_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-	Rect boundRect;
-	int biggestContour = GetMaxAreaContourId(contours);
-	if (biggestContour != -1) {
-		boundRect = boundingRect(Mat(contours[biggestContour]));
-		Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
-			boundRect.width, boundRect.height);
-		if (boundRect.area() > 10) {
-			Mat cropped = src->clone();
-			cropped = cropped(boundRect);
-			mapped_rect = FindBiggestContour(&cropped, output, mapped_rect, r + 1);
-		}
-		return mapped_rect;
-	}
-	return initial_box;
-}
-
-Rect FindTopMostContour(const Mat * src, const Mat * output, Rect initial_box, int r) {
-	if ((initial_box.area() <= 10 && r != 0) || r >= max_recursion) {
-		return initial_box;
-	}
-
-	std::vector<std::vector<Point>> contours;
-	std::vector<Vec4i> hierarchy;
-
-	Mat threshold_output;
-
-	// Detect edges using Threshold.
-	threshold(*src, threshold_output, thresh * (thresh_multiplier + r), 255, THRESH_BINARY);
-	// Find contours
-	findContours(threshold_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
-
-	std::vector<Rect> boundRects(contours.size());
-	for (int i = 0; i < contours.size(); i++) {
-		boundRects[i] = boundingRect(Mat(contours[i]));
-	}
-	Rect boundRect = GetTopRect(boundRects);
-
-	Rect mapped_rect = Rect(initial_box.x + boundRect.x, initial_box.y + boundRect.y,
-		boundRect.width, boundRect.height);
-	if (boundRect.area() > 10) {
-		Mat cropped = src->clone();
-		cropped = cropped(boundRect);
-		mapped_rect = FindTopMostContour(&cropped, output, mapped_rect, r + 1);
-	}
-	return mapped_rect;
-}
-
-void PrintRealsenseError(const rs2::error & e) {
-	const char* function = e.get_failed_function().c_str();
-	const char* what = e.what();
-	const char* type;
-	switch (e.get_type())
-	{
-	case RS2_EXCEPTION_TYPE_BACKEND:
-		type = "Back end";
-		break;
-	case RS2_EXCEPTION_TYPE_CAMERA_DISCONNECTED:
-		type = "Camera Disconnected";
-		break;
-	case RS2_EXCEPTION_TYPE_COUNT:
-		type = "Count";
-		break;
-	case RS2_EXCEPTION_TYPE_DEVICE_IN_RECOVERY_MODE:
-		type = "Device in Recovery Mode";
-		break;
-	case RS2_EXCEPTION_TYPE_INVALID_VALUE:
-		type = "Invalid Value";
-		break;
-	case RS2_EXCEPTION_TYPE_IO:
-		type = "IO (What is that even supposed to be?)";
-		break;
-	case RS2_EXCEPTION_TYPE_NOT_IMPLEMENTED:
-		type = "Not Implemented (Oh We ArE iNtEl, OnE oF tHe BiGgEsT tEcH cOmPaNiEs "
-			"In ThE wOrLd, YeT wE cAn'T pRoViDe GoOd CoMpLeTe ApIs)";
-		break;
-	case RS2_EXCEPTION_TYPE_UNKNOWN:
-		type = "Unknown (Oof)";
-		break;
-	case RS2_EXCEPTION_TYPE_WRONG_API_CALL_SEQUENCE:
-		type = "Wrong API Call Sequence";
-		break;
-	default:
-		type = "Something probably went really wrong if you see this message";
-	}
-
-	std::cout << "An error occurred!: " <<
-		"\n\tType: " << type <<
-		"\n\tIn Function: " << function <<
-		"\n\tError Message: " << what << std::endl;
+	fprintf(stderr, "GLFW Error: %s\n", description);
 }
