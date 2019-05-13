@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
 
-	Realsense camera;
+	Realsense camera(true);
 
 	while (!glfwWindowShouldClose(window)) {
 		// Poll and handle events (inputs, window resize, etc.).
@@ -100,7 +100,7 @@ int main(int argc, char** argv) {
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		if (camera.has_failed) {
+		if (camera.get_has_failed()) {
 			fprintf(stderr, "Camera has failed!");
 			exit(EXIT_FAILURE);
 		}

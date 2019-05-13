@@ -10,6 +10,7 @@ private:
 	cv::Mat m_Texture_Data;
 public:
 	Texture(const rs2::video_frame& frame);
+	Texture(const cv::Mat& frame);
 	~Texture();
 
 	void Bind(unsigned int slot = 0) const;

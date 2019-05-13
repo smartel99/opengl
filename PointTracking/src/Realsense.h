@@ -14,9 +14,11 @@
 #include "vendor/glm/glm.hpp"
 #include "vendor/glm/gtc/matrix_transform.hpp"
 
+using namespace cv;
+
 class Realsense {
 public:
-	Realsense();
+	Realsense(bool d = false);
 	~Realsense();
 
 	bool OnUpdate();
@@ -26,7 +28,7 @@ public:
 	std::unique_ptr<rs2::pipeline> pipe;
 	std::unique_ptr<Texture> Frame;
 
-	bool has_failed;
+	inline bool get_has_failed() const { return m_has_failed; }
 
 private:
 	void Print_Error(const rs2::error& e);
@@ -36,17 +38,31 @@ private:
 	std::unique_ptr<VertexBuffer> m_VertexBuffer;
 
 	rs2::pipeline_profile m_Profile;
+	// rs2::align allows to perform alignement of depth frames to other frames.
+	rs2::align m_align;
+	float m_DepthScale;
+
+	Ptr<BackgroundSubtractorKNN> m_bg_sub;
 
 	// Create a orthographic projection matrix which is equivalent to the resolution of the 
 	// window.
 	glm::mat4 m_Proj;
-	// Create a view matrix that will simulate a camera translation.
-	// Since there is no such thing as a camera per say, we instead move the scene to accomplish 
-	// this effect.
-	glm::mat4 m_View;
-	// Create a model matrix that will translate the model according to the values of the slider.
-	glm::mat4 m_Model;
 
-	float m_DepthScale;
+	bool m_has_failed;
+	bool m_debug;
+	bool m_emitter_activated;
+
+	int m_thresh;
+	int m_thresh_multiplier;
+	int m_max_recursion;
+
+	Rect m_detected_zone;
+	Point3f m_detected_zone_coordinate;
+
+	Rect FindBiggestContour(const Mat* src, Rect loc, int r);
+	int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
+	void getXYPoint(Mat src, Rect loc);
+	double getZPoint(const Mat& src, Point loc, int r);
+	void toggleEmitter();
 };
 #endif
