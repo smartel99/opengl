@@ -3,6 +3,7 @@
 // https://www.intorobotics.com/how-to-detect-and-track-object-with-opencv/
 // https://www.learnopencv.com/selective-search-for-object-detection-cpp-python/
 // https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_table_of_contents_feature2d/py_table_of_contents_feature2d.html
+// https://www.youtube.com/watch?v=GiOgWfmWzPY
 
 #include <sstream>
 #include <iostream>
@@ -108,6 +109,12 @@ int main(int argc, char** argv) {
 		camera.OnRender();
 		camera.OnImGuiRender();
 
+		Point3f detected(0, 0, 0);
+		if (camera.poll_for_detection(&detected)) {
+			std::cout << "Detected: (" << detected.x << ", " <<
+				detected.y << ", " <<
+				detected.z << ")\t\r";
+		}
 		// Rendering.
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

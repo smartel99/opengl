@@ -24,11 +24,14 @@ public:
 	bool OnUpdate();
 	void OnRender();
 	void OnImGuiRender();
+	bool poll_for_detection(Point3f* var);
 
 	std::unique_ptr<rs2::pipeline> pipe;
 	std::unique_ptr<Texture> Frame;
 
 	inline bool get_has_failed() const { return m_has_failed; }
+	inline bool get_emitter_state() const { return m_emitter_activated; }
+	inline Point3f get_point_coordinate() const { return m_detected_zone_coordinate; }
 
 private:
 	void Print_Error(const rs2::error& e);
@@ -58,11 +61,13 @@ private:
 
 	Rect m_detected_zone;
 	Point3f m_detected_zone_coordinate;
+	bool m_detection_flag;
 
 	Rect FindBiggestContour(const Mat* src, Rect loc, int r);
 	int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
 	void getXYPoint(Mat src, Rect loc);
 	double getZPoint(const Mat& src, Point loc, int r);
 	void toggleEmitter();
+	void saveFrame();
 };
 #endif

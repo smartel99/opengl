@@ -8,7 +8,8 @@ Realsense::Realsense(bool d) : m_Proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.
 m_DepthScale(0.0f), m_has_failed(false), m_debug(d),
 m_thresh(20), m_thresh_multiplier(1),
 m_detected_zone(0, 0, 0, 0), m_detected_zone_coordinate(-1.f, -1.f, -1.f),
-m_align(RS2_STREAM_COLOR), m_emitter_activated(false), m_max_recursion(8)
+m_align(RS2_STREAM_COLOR), m_emitter_activated(false), m_max_recursion(8),
+m_detection_flag(false)
 {
 	float textured_square_positions[] = {
 		//  Xr,     Yr,   Xt,   Yt
@@ -108,7 +109,7 @@ bool Realsense::OnUpdate()
 		m_bg_sub->apply(new_frame, foreground);	// Apply background subtraction.
 		blur(foreground, foreground, Size(10, 10), Point(-1, -1));	// Blur the resulting image.
 		threshold(foreground, foreground, 200, 255, THRESH_BINARY);	// Remove the shadows.
-
+		imshow("knn", foreground);
 		// --- DETECTION ---
 
 		// Recursively find the biggest contour in the frame.
@@ -127,19 +128,21 @@ bool Realsense::OnUpdate()
 
 			// Get (x, y) coordinate of the point.
 			getXYPoint(foreground(m_detected_zone), m_detected_zone);
-			if (m_debug) {
-				if (m_detected_zone_coordinate.x >= 0 && m_detected_zone_coordinate.y >= 0) {
-					circle(new_frame, Point((int)m_detected_zone_coordinate.x,
-						(int)m_detected_zone_coordinate.y), 5, Scalar(0, 0, 255), -1, 8, 0);
-					// Draw a rectangle around the contour we found.
-					rectangle(new_frame, m_detected_zone, Scalar(0, 255, 0), 1, 8, 0);
-				}
-			}
+			if (m_detected_zone_coordinate.x >= 0 && m_detected_zone_coordinate.y >= 0) {
+				circle(new_frame, Point((int)m_detected_zone_coordinate.x,
+					(int)m_detected_zone_coordinate.y), 5, Scalar(0, 0, 255), -1, 8, 0);
+				// Draw a rectangle around the contour we found.
+				rectangle(new_frame, m_detected_zone, Scalar(0, 255, 0), 1, 8, 0);
 
-			// Get distance (z) to detected point.
-			rs2::depth_frame depth_frame = aligned_frames.get_depth_frame();
-			Mat mat_depth_frame = Mat(Size(640, 480), CV_16SC1, (void*)depth_frame.get_data(), Mat::AUTO_STEP);
-			m_detected_zone_coordinate.z = getZPoint(mat_depth_frame, Point(m_detected_zone_coordinate.x, m_detected_zone_coordinate.y), 1);
+
+				// Get distance (z) to detected point.
+				rs2::depth_frame depth_frame = aligned_frames.get_depth_frame();
+				Mat mat_depth_frame = Mat(Size(640, 480), CV_16SC1, (void*)depth_frame.get_data(), Mat::AUTO_STEP);
+				m_detected_zone_coordinate.z = getZPoint(mat_depth_frame, Point(m_detected_zone_coordinate.x, m_detected_zone_coordinate.y), 1);
+
+				// If everything is ok, a detection is confirmed.
+				m_detection_flag = true;
+			}
 		}
 		// If no contours was found
 		else {
@@ -183,6 +186,19 @@ void Realsense::OnImGuiRender()
 		else
 			ImGui::Text("Emitter Disabled");
 		ImGui::SliderInt("Max Rec", &m_max_recursion, 1, 10);
+		if (ImGui::Button("Screenshot"))
+			saveFrame();
+	}
+}
+
+bool Realsense::poll_for_detection(Point3f* var)
+{
+	if(!m_detection_flag)
+		return false;
+	else {
+		m_detection_flag = false;
+		*var = m_detected_zone_coordinate;
+		return true;
 	}
 }
 
@@ -346,4 +362,10 @@ void Realsense::toggleEmitter()
 		}
 	}
 	fprintf(stderr, "Couldn't toggle emitter!");
+}
+
+void Realsense::saveFrame()
+{
+	Mat im = *Frame->GetData();
+	imwrite("res/img/screenshot.jpg", im);
 }
