@@ -63,11 +63,15 @@ private:
 	Point3f m_detected_zone_coordinate;
 	bool m_detection_flag;
 
+	int m_blur_size;
+	int m_shadow_threshold;
+
 	Rect FindBiggestContour(const Mat* src, Rect loc, int r);
 	int GetMaxAreaContourId(std::vector<std::vector<Point>> contours);
 	void getXYPoint(Mat src, Rect loc);
 	double getZPoint(const Mat& src, Point loc, int r);
 	void toggleEmitter();
 	void saveFrame();
+	void showDeviceSettings(bool* p_open);
 };
 #endif

@@ -3,13 +3,16 @@
 #include <iostream>
 
 #include "vendor/imgui/imgui.h"
+#include "device_helper.h"
 
 Realsense::Realsense(bool d) : m_Proj(glm::ortho(0.0f, 640.0f, 0.0f, 480.0f, -1.0f, 1.0f)),
 m_DepthScale(0.0f), m_has_failed(false), m_debug(d),
 m_thresh(20), m_thresh_multiplier(1),
 m_detected_zone(0, 0, 0, 0), m_detected_zone_coordinate(-1.f, -1.f, -1.f),
-m_align(RS2_STREAM_COLOR), m_emitter_activated(false), m_max_recursion(8),
-m_detection_flag(false)
+m_align(RS2_STREAM_COLOR), m_emitter_activated(false), m_max_recursion(5),
+m_detection_flag(false),
+m_shadow_threshold(127),
+m_blur_size(15)
 {
 	float textured_square_positions[] = {
 		//  Xr,     Yr,   Xt,   Yt
@@ -107,9 +110,9 @@ bool Realsense::OnUpdate()
 		// Remove the shadows.
 		Mat foreground;
 		m_bg_sub->apply(new_frame, foreground);	// Apply background subtraction.
-		blur(foreground, foreground, Size(10, 10), Point(-1, -1));	// Blur the resulting image.
-		threshold(foreground, foreground, 200, 255, THRESH_BINARY);	// Remove the shadows.
-		imshow("knn", foreground);
+		blur(foreground, foreground, Size(m_blur_size, m_blur_size), Point(-1, -1));	// Blur the resulting image.
+		threshold(foreground, foreground, m_shadow_threshold, 255, THRESH_BINARY);	// Remove the shadows.
+		imshow("No Shadow", foreground);
 		// --- DETECTION ---
 
 		// Recursively find the biggest contour in the frame.
@@ -173,27 +176,27 @@ void Realsense::OnRender()
 
 void Realsense::OnImGuiRender()
 {
+	static bool show_settings = false;
+
+	if (show_settings)	showDeviceSettings(&show_settings);
+
+	if (ImGui::BeginMenuBar()) {
+		if (ImGui::BeginMenu("Menu")) {
+			ImGui::MenuItem("Settings", NULL, &show_settings);
+		}
+		ImGui::EndMenuBar();
+	}
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
 		ImGui::GetIO().Framerate);
 	ImGui::Text("Point location (x,y,z): (%f, %f, %f)", m_detected_zone_coordinate.x,
 		m_detected_zone_coordinate.y,
 		m_detected_zone_coordinate.z);
-	ImGui::Checkbox("Debug", &m_debug);
-	if (m_debug) {
-		if (ImGui::Button("Toggle emitter")) toggleEmitter();
-		if (m_emitter_activated)
-			ImGui::Text("Emitter Enabled");
-		else
-			ImGui::Text("Emitter Disabled");
-		ImGui::SliderInt("Max Rec", &m_max_recursion, 1, 10);
-		if (ImGui::Button("Screenshot"))
-			saveFrame();
-	}
+
 }
 
-bool Realsense::poll_for_detection(Point3f* var)
+bool Realsense::poll_for_detection(Point3f * var)
 {
-	if(!m_detection_flag)
+	if (!m_detection_flag)
 		return false;
 	else {
 		m_detection_flag = false;
@@ -368,4 +371,20 @@ void Realsense::saveFrame()
 {
 	Mat im = *Frame->GetData();
 	imwrite("res/img/screenshot.jpg", im);
+}
+
+void Realsense::showDeviceSettings(bool* p_open)
+{
+	// https://github.com/IntelRealSense/librealsense/blob/2f6a26aa784cc140f12b9144fdc2fb2171d410fa/examples/sensor-control/api_how_to.h#L147-L184
+	// Get the binded device
+	// Get all the sensors for that device
+	// For each sensor:
+		// Display the supported options and their current state.
+	rs2::device device = m_Profile.get_device();
+	std::string device_name = get_device_name(device);
+	if (!ImGui::Begin(device_name.c_str(), p_open)) {
+		ImGui::End();
+		return;
+	}
+
 }

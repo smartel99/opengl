@@ -148,6 +148,7 @@
     <ClCompile Include="src\vendor\imgui\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\device_helper.h" />
     <ClInclude Include="src\Realsense.h" />
     <ClInclude Include="src\rendering\IndexBuffer.h" />
     <ClInclude Include="src\rendering\Renderer.h" />
