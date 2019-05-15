@@ -1,6 +1,7 @@
 #include "Realsense.h"
 
 #include <iostream>
+#include <sstream>
 
 #include "vendor/imgui/imgui.h"
 #include "device_helper.h"
@@ -112,7 +113,6 @@ bool Realsense::OnUpdate()
 		m_bg_sub->apply(new_frame, foreground);	// Apply background subtraction.
 		blur(foreground, foreground, Size(m_blur_size, m_blur_size), Point(-1, -1));	// Blur the resulting image.
 		threshold(foreground, foreground, m_shadow_threshold, 255, THRESH_BINARY);	// Remove the shadows.
-		imshow("No Shadow", foreground);
 		// --- DETECTION ---
 
 		// Recursively find the biggest contour in the frame.
@@ -180,17 +180,18 @@ void Realsense::OnImGuiRender()
 
 	if (show_settings)	showDeviceSettings(&show_settings);
 
-	if (ImGui::BeginMenuBar()) {
-		if (ImGui::BeginMenu("Menu")) {
-			ImGui::MenuItem("Settings", NULL, &show_settings);
-		}
-		ImGui::EndMenuBar();
-	}
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
 		ImGui::GetIO().Framerate);
 	ImGui::Text("Point location (x,y,z): (%f, %f, %f)", m_detected_zone_coordinate.x,
 		m_detected_zone_coordinate.y,
 		m_detected_zone_coordinate.z);
+	if (ImGui::BeginMainMenuBar()) {
+		if (ImGui::BeginMenu("Menu")) {
+			ImGui::MenuItem("Settings", NULL, &show_settings);
+			ImGui::EndMenu();
+		}
+		ImGui::EndMainMenuBar();
+	}
 
 }
 
@@ -387,4 +388,32 @@ void Realsense::showDeviceSettings(bool* p_open)
 		return;
 	}
 
+	// Iterate over all available sensors.
+	std::vector<rs2::sensor> sensors = device.query_sensors();
+	for (rs2::sensor sensor : sensors) {
+		if (ImGui::TreeNode(sensor.get_info(RS2_CAMERA_INFO_NAME))) {
+			// Iterate over all available options for the current sensor.
+			for (int i = 0; i < static_cast<int>(RS2_OPTION_COUNT); i++) {
+				rs2_option option_type = static_cast<rs2_option>(i);
+					std::ostringstream oss;
+					oss << option_type;
+					ImGui::Text(oss.str().c_str());
+					// Verify that the sensor supports this option.
+
+			}
+			ImGui::TreePop();
+		}
+
+	}
+
+	/*if (ImGui::CollapsingHeader("This is my collapsing header")) {
+		ImGui::Text("This works!");
+		if (ImGui::IsItemHovered()) {
+			ImGui::BeginTooltip();
+			ImGui::Text("And this works too!");
+			ImGui::EndTooltip();
+		}
+	}*/
+
+	ImGui::End();
 }
